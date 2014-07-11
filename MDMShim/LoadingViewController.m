@@ -48,6 +48,9 @@
     [self performSegueWithIdentifier:SEGUE_WELCOME_SCREEN sender:self];
 }
 
-
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    
+    _progressView.center = self.view.center;
+}
 
 @end

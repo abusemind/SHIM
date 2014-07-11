@@ -23,6 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="58" y="-42"/>
         </scene>
         <!--Welcome Screen View Controller-->
         <scene sceneID="Nky-ja-aD8">
@@ -117,7 +118,7 @@
                         <outlet property="enterpriseAppStore" destination="B7D-HX-mjZ" id="Jox-Tn-yVc"/>
                         <outlet property="morganstanley" destination="Nh9-s5-GLJ" id="zMl-8V-604"/>
                         <outlet property="pageControl" destination="22N-8s-ZFM" id="o8j-mX-ZnD"/>
-                        <segue destination="rgN-p7-2dV" kind="modal" identifier="launchPassengerApp" modalTransitionStyle="coverVertical" id="Ygs-vu-o33"/>
+                        <segue destination="rgN-p7-2dV" kind="modal" identifier="launchPassengerApp" modalTransitionStyle="crossDissolve" id="Ygs-vu-o33"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZX-Y3-c4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -137,10 +138,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="afq-N8-F5z" kind="modal" identifier="welcomeScreen" modalTransitionStyle="crossDissolve" id="Vnd-jR-ah0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umg-mk-bxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1102" y="-27"/>
+            <point key="canvasLocation" x="1382" y="-15"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -148,4 +152,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Vnd-jR-ah0"/>
+    </inferredMetricsTieBreakers>
 </document>
