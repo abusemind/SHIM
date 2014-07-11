@@ -9,6 +9,7 @@
 #import "WelcomeScreenViewController.h"
 #import "ApplicationSmallCell.h"
 #import "MDMApplication.h"
+#import "PassengerAppHybridViewController.h"
 
 #import <Cordova/CDVAvailability.h>
 
@@ -27,6 +28,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
 }
 
 @property (nonatomic, strong) NSMutableArray *applications;
+@property (strong, nonatomic) MDMApplication *passengerAppToOpen;
 
 @property (weak, nonatomic) IBOutlet UILabel *morganstanley;
 @property (weak, nonatomic) IBOutlet UILabel *enterpriseAppStore;
@@ -35,11 +37,11 @@ static NSString *const cellId = @"ApplicationSmallCell";
 
 @property (weak, nonatomic) IBOutlet UIView *bannerView;
 
+
 @end
 
 @implementation WelcomeScreenViewController
 
-#pragma mark - UIViewController
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,7 +67,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     [self setupFakeData];
 }
 
-#pragma mark - Private
+#pragma mark - Setup
 - (void) setupCollectionView
 {
     self.collectionView.dataSource = self;
@@ -188,6 +190,17 @@ static NSString *const cellId = @"ApplicationSmallCell";
     return CGSizeMake(self.collectionView.bounds.size.width/_numberOfItemsPerRow, _itemDefaultHeight);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    MDMApplication *app = [self.applications objectAtIndex:indexPath.item];
+    if(app)
+    {
+        self.passengerAppToOpen = app;
+        [self launchPassengerApp];
+    }
+
+}
+
 #pragma mark - Scroll view delegate (Update PageControl's current page)
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
 	if (!_pageControlBeingUsed && CDV_IsIPad()) {
@@ -198,7 +211,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     
     if(!CDV_IsIPad()){
         CGFloat offset = self.collectionView.contentOffset.y + _topContentInsect;
-        CGFloat alpha = 1- offset / _topContentInsect;
+        CGFloat alpha = 1- (offset / 3) / _topContentInsect;
         if(alpha < 0) alpha = 0;
         if(self.bannerView){
             if(alpha != 1)
@@ -216,5 +229,20 @@ static NSString *const cellId = @"ApplicationSmallCell";
     if(CDV_IsIPad()) _pageControlBeingUsed = NO;
 }
 
+#pragma mark - Passenger App
+- (void) launchPassengerApp
+{
+    [self performSegueWithIdentifier:SEGUE_LAUNCH_PASSENGER_APP sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //remove observers to notification center
+    
+    if([segue.identifier isEqualToString:SEGUE_LAUNCH_PASSENGER_APP]) {
+        PassengerAppHybridViewController *destination = segue.destinationViewController;
+        [destination setPassengerApp:self.passengerAppToOpen];
+    }
+}
 
 @end

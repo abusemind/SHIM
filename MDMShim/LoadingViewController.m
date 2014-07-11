@@ -45,7 +45,7 @@
 
 - (void) gotoWelcomeScreen
 {
-    [self performSegueWithIdentifier:@"welcomeScreen" sender:self];
+    [self performSegueWithIdentifier:SEGUE_WELCOME_SCREEN sender:self];
 }
 
 

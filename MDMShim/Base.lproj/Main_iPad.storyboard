@@ -99,11 +99,30 @@
                         <outlet property="enterpriseAppStore" destination="bYH-fB-36V" id="c4a-z8-BVC"/>
                         <outlet property="morganstanley" destination="UFc-rV-2c1" id="Dkt-bE-gAj"/>
                         <outlet property="pageControl" destination="Wyx-uI-rFM" id="04y-C4-nac"/>
+                        <segue destination="qke-Oz-XYm" kind="modal" identifier="launchPassengerApp" modalTransitionStyle="coverVertical" id="2F3-lw-pbq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Aj-GW-4ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="761" y="-119"/>
+        </scene>
+        <!--Passenger App Hybrid View Controller-->
+        <scene sceneID="l0B-IB-sAo">
+            <objects>
+                <viewController id="qke-Oz-XYm" customClass="PassengerAppHybridViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xeL-Fc-gfo"/>
+                        <viewControllerLayoutGuide type="bottom" id="JNn-j2-Yin"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6nS-cT-dEa">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kaS-h5-V9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="-117"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

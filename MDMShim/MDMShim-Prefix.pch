@@ -15,4 +15,5 @@
     #import <Foundation/Foundation.h>
 
     #import <Cordova/CDVDebug.h>
+    #import "Constants.h"
 #endif

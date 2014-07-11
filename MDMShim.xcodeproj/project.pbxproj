@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF7240271970487C002A8A1C /* BaseHybridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7240261970487C002A8A1C /* BaseHybridViewController.m */; };
+		FF724029197049A3002A8A1C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF724028197049A3002A8A1C /* AssetsLibrary.framework */; };
+		FF72402B197049AF002A8A1C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF72402A197049AF002A8A1C /* CoreLocation.framework */; };
+		FF72402D197049C0002A8A1C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF72402C197049C0002A8A1C /* MobileCoreServices.framework */; };
+		FF72403219704A19002A8A1C /* PassengerAppHybridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72403119704A19002A8A1C /* PassengerAppHybridViewController.m */; };
+		FF72403819704E96002A8A1C /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = FF72403719704E96002A8A1C /* config.xml */; };
 		FF7E2A0B196FB25300591971 /* libAppConnectLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7E29D8196FB25300591971 /* libAppConnectLibrary.a */; };
 		FF7E2A0C196FB25300591971 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7E29D9196FB25300591971 /* libcrypto.a */; };
 		FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E29E5196FB25300591971 /* JSONModel+CoreData.m */; };
@@ -69,6 +75,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF7240251970487C002A8A1C /* BaseHybridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHybridViewController.h; sourceTree = "<group>"; };
+		FF7240261970487C002A8A1C /* BaseHybridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHybridViewController.m; sourceTree = "<group>"; };
+		FF724028197049A3002A8A1C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		FF72402A197049AF002A8A1C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FF72402C197049C0002A8A1C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		FF72403019704A19002A8A1C /* PassengerAppHybridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerAppHybridViewController.h; sourceTree = "<group>"; };
+		FF72403119704A19002A8A1C /* PassengerAppHybridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerAppHybridViewController.m; sourceTree = "<group>"; };
+		FF72403419704C5A002A8A1C /* SegueIdentifiers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueIdentifiers.h; sourceTree = "<group>"; };
+		FF72403519704D0A002A8A1C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		FF72403719704E96002A8A1C /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		FF7E29D4196FB25300591971 /* ACError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACError.h; sourceTree = "<group>"; };
 		FF7E29D5196FB25300591971 /* ACFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACFileHandle.h; sourceTree = "<group>"; };
 		FF7E29D6196FB25300591971 /* ACSecureFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSecureFile.h; sourceTree = "<group>"; };
@@ -158,6 +174,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF72402D197049C0002A8A1C /* MobileCoreServices.framework in Frameworks */,
+				FF72402B197049AF002A8A1C /* CoreLocation.framework in Frameworks */,
+				FF724029197049A3002A8A1C /* AssetsLibrary.framework in Frameworks */,
 				FF7E2A0B196FB25300591971 /* libAppConnectLibrary.a in Frameworks */,
 				FFB30249196F8613001FE814 /* libz.dylib in Frameworks */,
 				FFB30243196F84F9001FE814 /* libCordova.a in Frameworks */,
@@ -181,6 +200,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF72402E197049CF002A8A1C /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				FFB301CE196F8344001FE814 /* LoadingViewController.h */,
+				FFB301CF196F8344001FE814 /* LoadingViewController.m */,
+				FF7E2A32196FC58600591971 /* WelcomeScreenViewController.h */,
+				FF7E2A33196FC58600591971 /* WelcomeScreenViewController.m */,
+			);
+			name = Native;
+			sourceTree = "<group>";
+		};
+		FF72402F197049DE002A8A1C /* Hybrid */ = {
+			isa = PBXGroup;
+			children = (
+				FF7240251970487C002A8A1C /* BaseHybridViewController.h */,
+				FF7240261970487C002A8A1C /* BaseHybridViewController.m */,
+				FF72403019704A19002A8A1C /* PassengerAppHybridViewController.h */,
+				FF72403119704A19002A8A1C /* PassengerAppHybridViewController.m */,
+			);
+			name = Hybrid;
+			sourceTree = "<group>";
+		};
+		FF72403319704C25002A8A1C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FF72403419704C5A002A8A1C /* SegueIdentifiers.h */,
+				FF72403519704D0A002A8A1C /* Constants.h */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		FF72403619704E96002A8A1C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF72403719704E96002A8A1C /* config.xml */,
+			);
+			name = Resources;
+			path = MDMShim/Resources;
+			sourceTree = "<group>";
+		};
 		FF7E29D2196FB25300591971 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +362,7 @@
 		FF7E2A1D196FB2AE00591971 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FF72403319704C25002A8A1C /* Constants */,
 				FF7E2A27196FB56900591971 /* logger */,
 			);
 			path = Utils;
@@ -332,10 +392,8 @@
 		FF7E2A2E196FC24A00591971 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FFB301CE196F8344001FE814 /* LoadingViewController.h */,
-				FFB301CF196F8344001FE814 /* LoadingViewController.m */,
-				FF7E2A32196FC58600591971 /* WelcomeScreenViewController.h */,
-				FF7E2A33196FC58600591971 /* WelcomeScreenViewController.m */,
+				FF72402F197049DE002A8A1C /* Hybrid */,
+				FF72402E197049CF002A8A1C /* Native */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -366,6 +424,7 @@
 				FFB301DE196F8345001FE814 /* MDMShimTests */,
 				FFB301B5196F8344001FE814 /* Frameworks */,
 				FFB301B4196F8344001FE814 /* Products */,
+				FF72403619704E96002A8A1C /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -381,6 +440,9 @@
 		FFB301B5196F8344001FE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF72402C197049C0002A8A1C /* MobileCoreServices.framework */,
+				FF72402A197049AF002A8A1C /* CoreLocation.framework */,
+				FF724028197049A3002A8A1C /* AssetsLibrary.framework */,
 				FFB30248196F8613001FE814 /* libz.dylib */,
 				FFB301B6196F8344001FE814 /* Foundation.framework */,
 				FFB301B8196F8344001FE814 /* CoreGraphics.framework */,
@@ -541,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB301CD196F8344001FE814 /* Main_iPad.storyboard in Resources */,
+				FF72403819704E96002A8A1C /* config.xml in Resources */,
 				FFB301D2196F8344001FE814 /* Images.xcassets in Resources */,
 				FF7E2A44196FE46700591971 /* application.png in Resources */,
 				FFB301CA196F8344001FE814 /* Main_iPhone.storyboard in Resources */,
@@ -571,6 +634,7 @@
 				FF7E2A1B196FB25300591971 /* zip.c in Sources */,
 				FF7E2A1C196FB25300591971 /* SSZipArchive.m in Sources */,
 				FF7E2A26196FB56500591971 /* MSPasteboardSharedLogger.m in Sources */,
+				FF72403219704A19002A8A1C /* PassengerAppHybridViewController.m in Sources */,
 				FF7E2A10196FB25300591971 /* JSONModelClassProperty.m in Sources */,
 				FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */,
 				FFB301D0196F8344001FE814 /* LoadingViewController.m in Sources */,
@@ -584,6 +648,7 @@
 				FF7E2A18196FB25300591971 /* ioapi.c in Sources */,
 				FF7E2A1A196FB25300591971 /* unzip.c in Sources */,
 				FFB301C3196F8344001FE814 /* main.m in Sources */,
+				FF7240271970487C002A8A1C /* BaseHybridViewController.m in Sources */,
 				FF7E2A13196FB25300591971 /* JSONAPI.m in Sources */,
 				FF7E2A17196FB25300591971 /* JSONValueTransformer.m in Sources */,
 				FF7E2A14196FB25300591971 /* JSONHTTPClient.m in Sources */,

@@ -629,7 +629,7 @@
  */
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
 {
-    NSLog(@"Finished load of: %@", theWebView.request.URL);
+    //NSLog(@"Finished load of: %@", theWebView.request.URL);
     // It's safe to release the lock even if this is just a sub-frame that's finished loading.
     [CDVUserAgentUtil releaseLock:&_userAgentLockToken];
 
