@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ApplicationSmallCell">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2QB-pm-Wu2">
+                    <rect key="frame" x="10" y="0.0" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="LRG-DE-afq"/>
+                        <constraint firstAttribute="width" constant="60" id="TEV-VX-hyL"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFJ-zJ-POl">
+                    <rect key="frame" x="0.0" y="57" width="80" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="szh-XX-XwY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="iFJ-zJ-POl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="57" id="Eir-et-zcR"/>
+                <constraint firstAttribute="trailing" secondItem="iFJ-zJ-POl" secondAttribute="trailing" id="KDc-pM-pAa"/>
+                <constraint firstItem="2QB-pm-Wu2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aKA-MW-dZl"/>
+                <constraint firstItem="iFJ-zJ-POl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fiD-qj-tAL"/>
+                <constraint firstAttribute="centerX" secondItem="2QB-pm-Wu2" secondAttribute="centerX" id="zcm-Wz-Yky"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="appIcon" destination="2QB-pm-Wu2" id="ccx-Za-uYP"/>
+                <outlet property="appTitleLabel" destination="iFJ-zJ-POl" id="54j-SI-u2K"/>
+            </connections>
+        </view>
+    </objects>
+</document>

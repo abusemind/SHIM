@@ -26,6 +26,12 @@
 		FF7E2A1B196FB25300591971 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = FF7E2A07196FB25300591971 /* zip.c */; };
 		FF7E2A1C196FB25300591971 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E2A0A196FB25300591971 /* SSZipArchive.m */; };
 		FF7E2A26196FB56500591971 /* MSPasteboardSharedLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E2A25196FB56500591971 /* MSPasteboardSharedLogger.m */; };
+		FF7E2A2C196FC0DF00591971 /* MSCycleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E2A2B196FC0DF00591971 /* MSCycleProgressView.m */; };
+		FF7E2A34196FC58600591971 /* WelcomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E2A33196FC58600591971 /* WelcomeScreenViewController.m */; };
+		FF7E2A37196FC69C00591971 /* ApplicationSmallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E2A36196FC69C00591971 /* ApplicationSmallCell.m */; };
+		FF7E2A3B196FC83D00591971 /* MDMApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E2A3A196FC83D00591971 /* MDMApplication.m */; };
+		FF7E2A41196FE0C300591971 /* ApplicationSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7E2A40196FE0C300591971 /* ApplicationSmallCell.xib */; };
+		FF7E2A44196FE46700591971 /* application.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7E2A43196FE46700591971 /* application.png */; };
 		FFB301B7196F8344001FE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB301B6196F8344001FE814 /* Foundation.framework */; };
 		FFB301B9196F8344001FE814 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB301B8196F8344001FE814 /* CoreGraphics.framework */; };
 		FFB301BB196F8344001FE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB301BA196F8344001FE814 /* UIKit.framework */; };
@@ -34,7 +40,7 @@
 		FFB301C7196F8344001FE814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB301C6196F8344001FE814 /* AppDelegate.m */; };
 		FFB301CA196F8344001FE814 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB301C8196F8344001FE814 /* Main_iPhone.storyboard */; };
 		FFB301CD196F8344001FE814 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB301CB196F8344001FE814 /* Main_iPad.storyboard */; };
-		FFB301D0196F8344001FE814 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB301CF196F8344001FE814 /* ViewController.m */; };
+		FFB301D0196F8344001FE814 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB301CF196F8344001FE814 /* LoadingViewController.m */; };
 		FFB301D2196F8344001FE814 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB301D1196F8344001FE814 /* Images.xcassets */; };
 		FFB301D9196F8344001FE814 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB301D8196F8344001FE814 /* XCTest.framework */; };
 		FFB301DA196F8344001FE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB301B6196F8344001FE814 /* Foundation.framework */; };
@@ -113,6 +119,16 @@
 		FF7E2A0A196FB25300591971 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		FF7E2A24196FB56500591971 /* MSPasteboardSharedLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPasteboardSharedLogger.h; sourceTree = "<group>"; };
 		FF7E2A25196FB56500591971 /* MSPasteboardSharedLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPasteboardSharedLogger.m; sourceTree = "<group>"; };
+		FF7E2A2A196FC0DF00591971 /* MSCycleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCycleProgressView.h; sourceTree = "<group>"; };
+		FF7E2A2B196FC0DF00591971 /* MSCycleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCycleProgressView.m; sourceTree = "<group>"; };
+		FF7E2A32196FC58600591971 /* WelcomeScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeScreenViewController.h; sourceTree = "<group>"; };
+		FF7E2A33196FC58600591971 /* WelcomeScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeScreenViewController.m; sourceTree = "<group>"; };
+		FF7E2A35196FC69C00591971 /* ApplicationSmallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSmallCell.h; sourceTree = "<group>"; };
+		FF7E2A36196FC69C00591971 /* ApplicationSmallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSmallCell.m; sourceTree = "<group>"; };
+		FF7E2A39196FC83D00591971 /* MDMApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDMApplication.h; path = Models/MDMApplication.h; sourceTree = "<group>"; };
+		FF7E2A3A196FC83D00591971 /* MDMApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDMApplication.m; path = Models/MDMApplication.m; sourceTree = "<group>"; };
+		FF7E2A40196FE0C300591971 /* ApplicationSmallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApplicationSmallCell.xib; sourceTree = "<group>"; };
+		FF7E2A43196FE46700591971 /* application.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = application.png; sourceTree = "<group>"; };
 		FFB301B3196F8344001FE814 /* MDMShim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDMShim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB301B6196F8344001FE814 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FFB301B8196F8344001FE814 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -125,8 +141,8 @@
 		FFB301C6196F8344001FE814 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FFB301C9196F8344001FE814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		FFB301CC196F8344001FE814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		FFB301CE196F8344001FE814 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FFB301CF196F8344001FE814 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FFB301CE196F8344001FE814 /* LoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
+		FFB301CF196F8344001FE814 /* LoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		FFB301D1196F8344001FE814 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FFB301D7196F8344001FE814 /* MDMShimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDMShimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB301D8196F8344001FE814 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -301,6 +317,46 @@
 			name = logger;
 			sourceTree = "<group>";
 		};
+		FF7E2A2D196FC0E300591971 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF7E2A2A196FC0DF00591971 /* MSCycleProgressView.h */,
+				FF7E2A2B196FC0DF00591971 /* MSCycleProgressView.m */,
+				FF7E2A35196FC69C00591971 /* ApplicationSmallCell.h */,
+				FF7E2A36196FC69C00591971 /* ApplicationSmallCell.m */,
+				FF7E2A40196FE0C300591971 /* ApplicationSmallCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		FF7E2A2E196FC24A00591971 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FFB301CE196F8344001FE814 /* LoadingViewController.h */,
+				FFB301CF196F8344001FE814 /* LoadingViewController.m */,
+				FF7E2A32196FC58600591971 /* WelcomeScreenViewController.h */,
+				FF7E2A33196FC58600591971 /* WelcomeScreenViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FF7E2A38196FC81A00591971 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF7E2A39196FC83D00591971 /* MDMApplication.h */,
+				FF7E2A3A196FC83D00591971 /* MDMApplication.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FF7E2A42196FE46700591971 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FF7E2A43196FE46700591971 /* application.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		FFB301AA196F8344001FE814 = {
 			isa = PBXGroup;
 			children = (
@@ -341,9 +397,11 @@
 				FFB301C6196F8344001FE814 /* AppDelegate.m */,
 				FFB301C8196F8344001FE814 /* Main_iPhone.storyboard */,
 				FFB301CB196F8344001FE814 /* Main_iPad.storyboard */,
-				FFB301CE196F8344001FE814 /* ViewController.h */,
-				FFB301CF196F8344001FE814 /* ViewController.m */,
+				FF7E2A38196FC81A00591971 /* Models */,
+				FF7E2A2E196FC24A00591971 /* View Controllers */,
+				FF7E2A2D196FC0E300591971 /* Views */,
 				FF7E2A1D196FB2AE00591971 /* Utils */,
+				FF7E2A42196FE46700591971 /* Images */,
 				FFB301D1196F8344001FE814 /* Images.xcassets */,
 				FFB301BD196F8344001FE814 /* Supporting Files */,
 			);
@@ -434,6 +492,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Morgan Stanley";
 				TargetAttributes = {
+					FFB301B2196F8344001FE814 = {
+						DevelopmentTeam = CK4Z27N5V8;
+					};
 					FFB301D6196F8344001FE814 = {
 						TestTargetID = FFB301B2196F8344001FE814;
 					};
@@ -481,7 +542,9 @@
 			files = (
 				FFB301CD196F8344001FE814 /* Main_iPad.storyboard in Resources */,
 				FFB301D2196F8344001FE814 /* Images.xcassets in Resources */,
+				FF7E2A44196FE46700591971 /* application.png in Resources */,
 				FFB301CA196F8344001FE814 /* Main_iPhone.storyboard in Resources */,
+				FF7E2A41196FE0C300591971 /* ApplicationSmallCell.xib in Resources */,
 				FFB301C1196F8344001FE814 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,13 +567,17 @@
 				FF7E2A11196FB25300591971 /* JSONModelError.m in Sources */,
 				FF7E2A12196FB25300591971 /* NSArray+JSONModel.m in Sources */,
 				FF7E2A19196FB25300591971 /* mztools.c in Sources */,
+				FF7E2A34196FC58600591971 /* WelcomeScreenViewController.m in Sources */,
 				FF7E2A1B196FB25300591971 /* zip.c in Sources */,
 				FF7E2A1C196FB25300591971 /* SSZipArchive.m in Sources */,
 				FF7E2A26196FB56500591971 /* MSPasteboardSharedLogger.m in Sources */,
 				FF7E2A10196FB25300591971 /* JSONModelClassProperty.m in Sources */,
 				FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */,
-				FFB301D0196F8344001FE814 /* ViewController.m in Sources */,
+				FFB301D0196F8344001FE814 /* LoadingViewController.m in Sources */,
 				FF7E2A16196FB25300591971 /* JSONKeyMapper.m in Sources */,
+				FF7E2A37196FC69C00591971 /* ApplicationSmallCell.m in Sources */,
+				FF7E2A2C196FC0DF00591971 /* MSCycleProgressView.m in Sources */,
+				FF7E2A3B196FC83D00591971 /* MDMApplication.m in Sources */,
 				FFB301C7196F8344001FE814 /* AppDelegate.m in Sources */,
 				FF7E2A0F196FB25300591971 /* JSONModelArray.m in Sources */,
 				FF7E2A15196FB25300591971 /* JSONModel+networking.m in Sources */,
@@ -657,6 +724,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yangyi Fei (2Z3FA82627)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yangyi Fei (2Z3FA82627)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDMShim/MDMShim-Prefix.pch";
 				INFOPLIST_FILE = "MDMShim/MDMShim-Info.plist";
@@ -666,6 +735,7 @@
 					"$(PROJECT_DIR)/Lib/AppConnect",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A51AC6DC-03D3-4618-B74C-D1CC246FE340";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -676,6 +746,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yangyi Fei (2Z3FA82627)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yangyi Fei (2Z3FA82627)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDMShim/MDMShim-Prefix.pch";
 				INFOPLIST_FILE = "MDMShim/MDMShim-Info.plist";
@@ -685,6 +757,7 @@
 					"$(PROJECT_DIR)/Lib/AppConnect",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A51AC6DC-03D3-4618-B74C-D1CC246FE340";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -705,6 +778,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)/**",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "MDMShimTests/MDMShimTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -723,6 +800,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDMShim/MDMShim-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)/**",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "MDMShimTests/MDMShimTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

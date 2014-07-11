@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Loading View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoadingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,9 +17,104 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="wLG-p3-PJi" kind="modal" identifier="welcomeScreen" modalTransitionStyle="flipHorizontal" id="K51-Bq-ZsF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Welcome Screen View Controller-->
+        <scene sceneID="iM7-bf-HMI">
+            <objects>
+                <viewController id="wLG-p3-PJi" customClass="WelcomeScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5mc-jv-9oJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="eGR-UW-5PS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tUS-Xb-mbY">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Morgan Stanley" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFc-rV-2c1">
+                                <rect key="frame" x="0.0" y="20" width="768" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="bIf-je-ngM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0L-rt-xub">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5i6-kY-DGI"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enterprise Mobile Apps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYH-fB-36V">
+                                <rect key="frame" x="0.0" y="86" width="768" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="zXa-fw-tnU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zDD-3g-vEO">
+                                <rect key="frame" x="0.0" y="128" width="768" height="830"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QCz-Ft-yP9">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Wyx-uI-rFM">
+                                <rect key="frame" x="365" y="967" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="LAo-Aq-bFs"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changePage:" destination="wLG-p3-PJi" eventType="valueChanged" id="4XM-EN-rF4"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wyx-uI-rFM" firstAttribute="leading" secondItem="tUS-Xb-mbY" secondAttribute="leading" constant="365" id="2cg-Bk-isa"/>
+                            <constraint firstItem="zDD-3g-vEO" firstAttribute="top" secondItem="bYH-fB-36V" secondAttribute="bottom" constant="21" id="5Gi-QG-l5k"/>
+                            <constraint firstAttribute="trailing" secondItem="zDD-3g-vEO" secondAttribute="trailing" id="7DI-B0-lXI"/>
+                            <constraint firstAttribute="trailing" secondItem="UFc-rV-2c1" secondAttribute="trailing" id="AHc-f3-08g"/>
+                            <constraint firstAttribute="trailing" secondItem="bYH-fB-36V" secondAttribute="trailing" id="C77-ys-P4G"/>
+                            <constraint firstItem="UFc-rV-2c1" firstAttribute="top" secondItem="n0L-rt-xub" secondAttribute="bottom" id="H3R-yp-usf"/>
+                            <constraint firstItem="eGR-UW-5PS" firstAttribute="top" secondItem="zDD-3g-vEO" secondAttribute="bottom" constant="66" id="HYM-ek-ToI"/>
+                            <constraint firstItem="UFc-rV-2c1" firstAttribute="leading" secondItem="tUS-Xb-mbY" secondAttribute="leading" id="Wen-DO-sXN"/>
+                            <constraint firstItem="zDD-3g-vEO" firstAttribute="leading" secondItem="tUS-Xb-mbY" secondAttribute="leading" id="d2c-qv-9fW"/>
+                            <constraint firstItem="eGR-UW-5PS" firstAttribute="top" secondItem="Wyx-uI-rFM" secondAttribute="bottom" constant="20" id="dcz-zS-RI6"/>
+                            <constraint firstItem="bYH-fB-36V" firstAttribute="top" secondItem="UFc-rV-2c1" secondAttribute="bottom" constant="23" id="fJc-fN-lnO"/>
+                            <constraint firstAttribute="trailing" secondItem="n0L-rt-xub" secondAttribute="trailing" id="oUC-28-dvd"/>
+                            <constraint firstAttribute="trailing" secondItem="Wyx-uI-rFM" secondAttribute="trailing" constant="364" id="txS-ZC-bUe"/>
+                            <constraint firstItem="bYH-fB-36V" firstAttribute="leading" secondItem="tUS-Xb-mbY" secondAttribute="leading" id="vGM-Zx-Cca"/>
+                            <constraint firstItem="n0L-rt-xub" firstAttribute="top" secondItem="tUS-Xb-mbY" secondAttribute="top" id="vyG-c0-KDu"/>
+                            <constraint firstItem="n0L-rt-xub" firstAttribute="leading" secondItem="tUS-Xb-mbY" secondAttribute="leading" id="xBa-kj-1ET"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="zDD-3g-vEO" id="bYv-h1-TpX"/>
+                        <outlet property="enterpriseAppStore" destination="bYH-fB-36V" id="c4a-z8-BVC"/>
+                        <outlet property="morganstanley" destination="UFc-rV-2c1" id="Dkt-bE-gAj"/>
+                        <outlet property="pageControl" destination="Wyx-uI-rFM" id="04y-C4-nac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Aj-GW-4ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="761" y="-119"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "Utils/MSLogger/MSPasteboardSharedLogger.h"
+#import "MSPasteboardSharedLogger.h"
 
 @implementation AppDelegate
 
