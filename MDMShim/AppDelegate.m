@@ -8,11 +8,17 @@
 
 #import "AppDelegate.h"
 
+#import "Utils/MSLogger/MSPasteboardSharedLogger.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+#if !TARGET_IPHONE_SIMULATOR
+    [MSPasteboardSharedLogger enable];
+#endif
+    
+    
     return YES;
 }
 							
