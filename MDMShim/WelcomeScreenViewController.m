@@ -17,12 +17,13 @@ static NSString *const cellId = @"ApplicationSmallCell";
 @interface WelcomeScreenViewController ()
 {
     BOOL _pageControlBeingUsed;
-    
-    int _currentPage;
-    int _firstIndex;
-    
+
+    int _firstIndexBeforeRotation;
     int _numberOfItemsPerRow;
     int _itemDefaultHeight;
+    
+    int _topContentInsect;
+    int _bottomContentInsect;
 }
 
 @property (nonatomic, strong) NSMutableArray *applications;
@@ -32,6 +33,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
+@property (weak, nonatomic) IBOutlet UIView *bannerView;
 
 @end
 
@@ -47,8 +49,10 @@ static NSString *const cellId = @"ApplicationSmallCell";
     _pageControlBeingUsed = NO;
     _numberOfItemsPerRow = CDV_IsIPad()? 2:1;
     _itemDefaultHeight   = CDV_IsIPad()? 150: 115;
+    _topContentInsect    = CDV_IsIPad()? 0: 80;
+    _bottomContentInsect = CDV_IsIPad()? 0: 40;
     
-    UIColor *defaultBGColor = [UIColor colorWithRed:239.0/255 green:223.0/255 blue:222.0/255 alpha:1];
+    UIColor *defaultBGColor = [UIColor colorWithRed:222.0/255 green:231.0/255 blue:239.0/255 alpha:1];
     self.morganstanley.backgroundColor = self.view.backgroundColor = defaultBGColor;
     self.collectionView.backgroundColor = [UIColor clearColor];
     
@@ -61,35 +65,6 @@ static NSString *const cellId = @"ApplicationSmallCell";
     [self setupFakeData];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                duration:(NSTimeInterval)duration
-{
-    int numberOfItemsInPage = floor(self.collectionView.bounds.size.height / _itemDefaultHeight) * _numberOfItemsPerRow;
-    
-    int currentPage = self.pageControl.currentPage;
-    _firstIndex = currentPage * numberOfItemsInPage;
-    
-    [self.collectionView.collectionViewLayout invalidateLayout];
-}
-
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    
-    self.pageControl.numberOfPages = ceil(self.collectionView.contentSize.width / self.collectionView.bounds.size.width);
-    
-    [self.collectionView setContentOffset:CGPointMake(0, 0) animated:NO];
-    
-    //make sure the first item before rotation is still visible after rotating
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        int countInAPage = [[self.collectionView indexPathsForVisibleItems] count];
-        
-        int pageOffset = floor(_firstIndex/countInAPage);
-        [self.collectionView
-            setContentOffset:CGPointMake(pageOffset * self.view.bounds.size.width, 0) animated:NO];
-        [self.collectionView.collectionViewLayout invalidateLayout];
-    });
-}
-
 #pragma mark - Private
 - (void) setupCollectionView
 {
@@ -100,9 +75,10 @@ static NSString *const cellId = @"ApplicationSmallCell";
     
     layout.minimumLineSpacing = 1.0;
     layout.minimumInteritemSpacing = 1.0;
-    
-    layout.scrollDirection = CDV_IsIPad()? UICollectionViewScrollDirectionHorizontal:UICollectionViewScrollDirectionVertical;
-    
+    layout.sectionInset = CDV_IsIPad()? UIEdgeInsetsMake(30, 0, 0, 0): UIEdgeInsetsMake(12, 0, 0, 0);
+    layout.scrollDirection = CDV_IsIPad()?
+        UICollectionViewScrollDirectionHorizontal:UICollectionViewScrollDirectionVertical;
+    self.collectionView.contentInset = UIEdgeInsetsMake(_topContentInsect, 0, _bottomContentInsect, 0);
     self.collectionView.collectionViewLayout = layout;
     self.collectionView.pagingEnabled = CDV_IsIPad()?YES:NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
@@ -133,6 +109,40 @@ static NSString *const cellId = @"ApplicationSmallCell";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.pageControl.numberOfPages = ceil(self.collectionView.contentSize.width / self.collectionView.bounds.size.width);
     });
+}
+
+#pragma mark - Rotate
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration
+{
+    
+    if(CDV_IsIPad()){
+        int numberOfItemsInPage = floor(self.collectionView.bounds.size.height / _itemDefaultHeight) * _numberOfItemsPerRow;
+        
+        int currentPage = self.pageControl.currentPage;
+        _firstIndexBeforeRotation = currentPage * numberOfItemsInPage;
+    }
+    
+    //Important!
+    [self.collectionView.collectionViewLayout invalidateLayout];
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    
+    if(CDV_IsIPad())
+    {
+        self.pageControl.numberOfPages = ceil(self.collectionView.contentSize.width / self.collectionView.bounds.size.width);
+        
+        [self.collectionView setContentOffset:CGPointMake(_topContentInsect, 0) animated:NO];
+        
+        //make sure the first item before rotation is still visible after rotating
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            int countInAPage = [[self.collectionView indexPathsForVisibleItems] count];
+            int pageOffset = floor(_firstIndexBeforeRotation/countInAPage);
+            [self.collectionView
+             setContentOffset:CGPointMake(pageOffset * self.view.bounds.size.width, 0) animated:NO];
+        });
+    }
 }
 
 
@@ -184,6 +194,17 @@ static NSString *const cellId = @"ApplicationSmallCell";
 		CGFloat pageWidth = self.collectionView.frame.size.width;
         int page = ceil(self.collectionView.contentOffset.x / pageWidth);
 		self.pageControl.currentPage = page;
+    }
+    
+    if(!CDV_IsIPad()){
+        CGFloat offset = self.collectionView.contentOffset.y + _topContentInsect;
+        CGFloat alpha = 1- offset / _topContentInsect;
+        if(alpha < 0) alpha = 0;
+        if(self.bannerView){
+            if(alpha != 1)
+                self.bannerView.userInteractionEnabled = NO;
+            self.bannerView.alpha = alpha;
+        }
     }
 }
 
