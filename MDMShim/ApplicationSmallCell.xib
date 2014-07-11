@@ -7,41 +7,54 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ApplicationSmallCell">
-            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="331" height="180"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2QB-pm-Wu2">
-                    <rect key="frame" x="10" y="0.0" width="60" height="60"/>
+                    <rect key="frame" x="10" y="10" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="LRG-DE-afq"/>
-                        <constraint firstAttribute="width" constant="60" id="TEV-VX-hyL"/>
+                        <constraint firstAttribute="height" constant="48" id="bKc-3q-PLj"/>
+                        <constraint firstAttribute="width" constant="48" id="lcq-ry-Xbx"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFJ-zJ-POl">
-                    <rect key="frame" x="0.0" y="57" width="80" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFJ-zJ-POl">
+                    <rect key="frame" x="66" y="20" width="245" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="szh-XX-XwY"/>
+                        <constraint firstAttribute="height" constant="21" id="zsM-oB-0lx"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.26982824025148333" green="0.44544935066083374" blue="0.74070142663043481" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="description" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-Wl-Hrq">
+                    <rect key="frame" x="10" y="59" width="321" height="121"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="iFJ-zJ-POl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="57" id="Eir-et-zcR"/>
-                <constraint firstAttribute="trailing" secondItem="iFJ-zJ-POl" secondAttribute="trailing" id="KDc-pM-pAa"/>
-                <constraint firstItem="2QB-pm-Wu2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aKA-MW-dZl"/>
-                <constraint firstItem="iFJ-zJ-POl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fiD-qj-tAL"/>
-                <constraint firstAttribute="centerX" secondItem="2QB-pm-Wu2" secondAttribute="centerX" id="zcm-Wz-Yky"/>
+                <constraint firstAttribute="bottom" secondItem="Zfb-Wl-Hrq" secondAttribute="bottom" id="DhM-iu-LoL"/>
+                <constraint firstAttribute="trailing" secondItem="Zfb-Wl-Hrq" secondAttribute="trailing" id="Div-ux-0lt"/>
+                <constraint firstItem="Zfb-Wl-Hrq" firstAttribute="top" secondItem="2QB-pm-Wu2" secondAttribute="bottom" constant="1" id="KJL-Rl-9qC"/>
+                <constraint firstItem="Zfb-Wl-Hrq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Uxx-9r-P9a"/>
+                <constraint firstItem="2QB-pm-Wu2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="WUR-r7-z2b"/>
+                <constraint firstItem="iFJ-zJ-POl" firstAttribute="leading" secondItem="2QB-pm-Wu2" secondAttribute="trailing" constant="8" id="YkG-PU-MN2"/>
+                <constraint firstAttribute="trailing" secondItem="iFJ-zJ-POl" secondAttribute="trailing" constant="20" id="g4b-hE-dCc"/>
+                <constraint firstItem="iFJ-zJ-POl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="rLY-Tj-0qw"/>
+                <constraint firstItem="2QB-pm-Wu2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="sRh-S2-HEf"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="appIcon" destination="2QB-pm-Wu2" id="ccx-Za-uYP"/>
                 <outlet property="appTitleLabel" destination="iFJ-zJ-POl" id="54j-SI-u2K"/>
+                <outlet property="description" destination="Zfb-Wl-Hrq" id="3Ek-4c-aW4"/>
             </connections>
         </view>
     </objects>

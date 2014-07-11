@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *appIcon;
 
+@property (weak, nonatomic) IBOutlet UITextView *description;
+
 @end

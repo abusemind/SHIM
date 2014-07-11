@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eJx-N9-9Nx">
-                                <rect key="frame" x="0.0" y="120" width="320" height="408"/>
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XgB-hO-RsB">
                                     <size key="itemSize" width="100" height="100"/>
@@ -57,11 +57,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-IM-M6m">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dim-id-uYw">
                                 <rect key="frame" x="0.0" y="20" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -70,7 +65,7 @@
                                         <rect key="frame" x="60" y="21" width="260" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="59" id="cuV-Ip-xCv"/>
+                                            <constraint firstAttribute="height" constant="59" id="0sw-32-c9T"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,7 +75,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="AND-I9-sbW"/>
+                                            <constraint firstAttribute="height" constant="21" id="uSR-uK-iPl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,32 +84,31 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Nh9-s5-GLJ" firstAttribute="top" secondItem="Dim-id-uYw" secondAttribute="top" id="Ikx-Z2-9EY"/>
-                                    <constraint firstItem="Nh9-s5-GLJ" firstAttribute="leading" secondItem="Dim-id-uYw" secondAttribute="leading" id="bjd-Dc-Apq"/>
-                                    <constraint firstAttribute="bottom" secondItem="B7D-HX-mjZ" secondAttribute="bottom" id="ccZ-JA-zW2"/>
-                                    <constraint firstAttribute="trailing" secondItem="B7D-HX-mjZ" secondAttribute="trailing" id="eyE-YN-dde"/>
-                                    <constraint firstAttribute="height" constant="80" id="rUV-p4-DXZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Nh9-s5-GLJ" secondAttribute="trailing" id="v0c-Cu-LYd"/>
-                                    <constraint firstItem="B7D-HX-mjZ" firstAttribute="leading" secondItem="Dim-id-uYw" secondAttribute="leading" constant="60" id="ymZ-R2-t1B"/>
+                                    <constraint firstItem="B7D-HX-mjZ" firstAttribute="leading" secondItem="Dim-id-uYw" secondAttribute="leading" constant="60" id="0XQ-0K-32s"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nh9-s5-GLJ" secondAttribute="trailing" id="ROs-Lb-bvW"/>
+                                    <constraint firstAttribute="height" constant="80" id="T0K-kA-bbu"/>
+                                    <constraint firstItem="B7D-HX-mjZ" firstAttribute="top" secondItem="Nh9-s5-GLJ" secondAttribute="bottom" id="Y8L-TO-ZEs"/>
+                                    <constraint firstItem="Nh9-s5-GLJ" firstAttribute="leading" secondItem="Dim-id-uYw" secondAttribute="leading" id="c3i-h2-jqd"/>
+                                    <constraint firstAttribute="trailing" secondItem="B7D-HX-mjZ" secondAttribute="trailing" id="ebt-sB-UUE"/>
+                                    <constraint firstItem="Nh9-s5-GLJ" firstAttribute="top" secondItem="Dim-id-uYw" secondAttribute="top" id="hE7-n1-azi"/>
                                 </constraints>
                             </view>
-                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="22N-8s-ZFM">
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="22N-8s-ZFM">
                                 <rect key="frame" x="141" y="531" width="39" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="changePage:" destination="afq-N8-F5z" eventType="valueChanged" id="blv-Jq-3o6"/>
-                                </connections>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Dim-id-uYw" secondAttribute="trailing" id="CqO-E0-pCC"/>
-                            <constraint firstItem="eJx-N9-9Nx" firstAttribute="leading" secondItem="2qD-iK-QcY" secondAttribute="leading" id="HHz-IB-T0w"/>
-                            <constraint firstItem="Dim-id-uYw" firstAttribute="top" secondItem="kQ0-YB-x10" secondAttribute="bottom" id="Wzp-k5-bAO"/>
-                            <constraint firstAttribute="trailing" secondItem="eJx-N9-9Nx" secondAttribute="trailing" id="cj4-Dv-Tr6"/>
-                            <constraint firstAttribute="bottom" secondItem="eJx-N9-9Nx" secondAttribute="bottom" constant="40" id="dMe-eF-bT9"/>
-                            <constraint firstItem="eJx-N9-9Nx" firstAttribute="top" secondItem="Dim-id-uYw" secondAttribute="bottom" constant="20" id="iea-U5-YO5"/>
-                            <constraint firstItem="Dim-id-uYw" firstAttribute="leading" secondItem="2qD-iK-QcY" secondAttribute="leading" id="uDq-2q-Zan"/>
+                            <constraint firstItem="eJx-N9-9Nx" firstAttribute="top" secondItem="Dim-id-uYw" secondAttribute="bottom" constant="20" id="3fY-5G-dar"/>
+                            <constraint firstAttribute="trailing" secondItem="eJx-N9-9Nx" secondAttribute="trailing" id="9YV-LI-qnl"/>
+                            <constraint firstAttribute="trailing" secondItem="Dim-id-uYw" secondAttribute="trailing" id="FZn-fx-JCp"/>
+                            <constraint firstItem="eJx-N9-9Nx" firstAttribute="leading" secondItem="2qD-iK-QcY" secondAttribute="leading" id="Ghi-mZ-dfv"/>
+                            <constraint firstItem="Dim-id-uYw" firstAttribute="top" secondItem="kQ0-YB-x10" secondAttribute="bottom" id="M0X-7k-xLW"/>
+                            <constraint firstItem="eUg-ec-T8t" firstAttribute="top" secondItem="eJx-N9-9Nx" secondAttribute="bottom" id="UfU-jT-czS"/>
+                            <constraint firstItem="Dim-id-uYw" firstAttribute="leading" secondItem="2qD-iK-QcY" secondAttribute="leading" id="gA0-4j-DQv"/>
+                            <constraint firstAttribute="centerX" secondItem="22N-8s-ZFM" secondAttribute="centerX" id="l5r-Zx-4mG"/>
+                            <constraint firstItem="22N-8s-ZFM" firstAttribute="top" secondItem="eJx-N9-9Nx" secondAttribute="bottom" constant="-37" id="oHK-EI-ted"/>
                         </constraints>
                     </view>
                     <connections>
