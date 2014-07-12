@@ -29,6 +29,7 @@
 		FF72405B19705539002A8A1C /* icon-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404B19705539002A8A1C /* icon-plus@2x.png */; };
 		FF72405C19705539002A8A1C /* icon-star.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404C19705539002A8A1C /* icon-star.png */; };
 		FF72405D19705539002A8A1C /* icon-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404D19705539002A8A1C /* icon-star@2x.png */; };
+		FF7240611970F8BA002A8A1C /* SpringnyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7240601970F8BA002A8A1C /* SpringnyFlowLayout.m */; };
 		FF7E2A0B196FB25300591971 /* libAppConnectLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7E29D8196FB25300591971 /* libAppConnectLibrary.a */; };
 		FF7E2A0C196FB25300591971 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7E29D9196FB25300591971 /* libcrypto.a */; };
 		FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E29E5196FB25300591971 /* JSONModel+CoreData.m */; };
@@ -119,6 +120,8 @@
 		FF72404B19705539002A8A1C /* icon-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-plus@2x.png"; sourceTree = "<group>"; };
 		FF72404C19705539002A8A1C /* icon-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-star.png"; sourceTree = "<group>"; };
 		FF72404D19705539002A8A1C /* icon-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-star@2x.png"; sourceTree = "<group>"; };
+		FF72405F1970F8BA002A8A1C /* SpringnyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringnyFlowLayout.h; sourceTree = "<group>"; };
+		FF7240601970F8BA002A8A1C /* SpringnyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringnyFlowLayout.m; sourceTree = "<group>"; };
 		FF7E29D4196FB25300591971 /* ACError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACError.h; sourceTree = "<group>"; };
 		FF7E29D5196FB25300591971 /* ACFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACFileHandle.h; sourceTree = "<group>"; };
 		FF7E29D6196FB25300591971 /* ACSecureFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSecureFile.h; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 				FF7E2A35196FC69C00591971 /* ApplicationSmallCell.h */,
 				FF7E2A36196FC69C00591971 /* ApplicationSmallCell.m */,
 				FF7E2A40196FE0C300591971 /* ApplicationSmallCell.xib */,
+				FF72405F1970F8BA002A8A1C /* SpringnyFlowLayout.h */,
+				FF7240601970F8BA002A8A1C /* SpringnyFlowLayout.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 				FF7E2A10196FB25300591971 /* JSONModelClassProperty.m in Sources */,
 				FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */,
 				FFB301D0196F8344001FE814 /* LoadingViewController.m in Sources */,
+				FF7240611970F8BA002A8A1C /* SpringnyFlowLayout.m in Sources */,
 				FF7E2A16196FB25300591971 /* JSONKeyMapper.m in Sources */,
 				FF7E2A37196FC69C00591971 /* ApplicationSmallCell.m in Sources */,
 				FF7E2A2C196FC0DF00591971 /* MSCycleProgressView.m in Sources */,

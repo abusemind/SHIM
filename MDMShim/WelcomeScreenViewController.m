@@ -10,6 +10,7 @@
 #import "ApplicationSmallCell.h"
 #import "MDMApplication.h"
 #import "PassengerAppHybridViewController.h"
+#import "SpringnyFlowLayout.h"
 
 #import <Cordova/CDVAvailability.h>
 
@@ -73,7 +74,8 @@ static NSString *const cellId = @"ApplicationSmallCell";
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
-    UICollectionViewFlowLayout* layout = [UICollectionViewFlowLayout new];
+    UICollectionViewFlowLayout* layout =
+        CDV_IsIPad()? [UICollectionViewFlowLayout new]: [SpringnyFlowLayout new];
     
     layout.minimumLineSpacing = 1.0;
     layout.minimumInteritemSpacing = 1.0;
