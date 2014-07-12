@@ -31,14 +31,11 @@ static NSString *const cellId = @"ApplicationSmallCell";
     int _bottomContentInsect;
 }
 
-
-
 @property (weak, nonatomic) IBOutlet UILabel *morganstanley;
 @property (weak, nonatomic) IBOutlet UILabel *enterpriseAppStore;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIView *bannerView;
-
 
 @end
 
@@ -51,7 +48,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     _pageControlBeingUsed = NO;
-    _numberOfItemsPerRow = CDV_IsIPad()? 2:1;
+    _numberOfItemsPerRow = CDV_IsIPad()? 2: 1;
     _itemDefaultHeight   = CDV_IsIPad()? 150: 115;
     _topContentInsect    = CDV_IsIPad()? 0: 80;
     _bottomContentInsect = CDV_IsIPad()? 0: 40;
@@ -83,8 +80,8 @@ static NSString *const cellId = @"ApplicationSmallCell";
 
 - (NSUInteger) supportedInterfaceOrientations
 {
-    if(USE_SPRINGNI_IN_IPHONE){
-        //springny layout would break autolayout when rotation
+    if(USE_SPRINGNI_IN_IPHONE && !CDV_IsIPad()){
+        //iPhone's springny layout would break autolayout when rotation
         return UIInterfaceOrientationMaskPortrait;
     }
     else{
@@ -123,7 +120,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     
     self.applications = [NSMutableArray new];
     
-    for(int i = 0; i < 30; i++)
+    for(int i = 0; i < 40; i++)
     {
         MDMApplication *app = [MDMApplication new];
         app.name = [NSString stringWithFormat:@"App: %d", i];
@@ -136,50 +133,26 @@ static NSString *const cellId = @"ApplicationSmallCell";
     
     [self.collectionView reloadData];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.pageControl.numberOfPages = ceil(self.collectionView.contentSize.width / self.collectionView.bounds.size.width);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.pageControl.numberOfPages = ceil((double)[self.applications count] /  [self.collectionView.visibleCells count]);
     });
-    
-    
-    
 }
 
 #pragma mark - Rotate
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration
 {
-    
-    if(CDV_IsIPad())
-    {
-        int numberOfItemsInPage = floor(self.collectionView.bounds.size.height / _itemDefaultHeight) * _numberOfItemsPerRow;
-        
-        int currentPage = self.pageControl.currentPage;
-        _firstIndexBeforeRotation = currentPage * numberOfItemsInPage;
-    }
-    
     //Important!
     [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     
-    if(CDV_IsIPad())
-    {
-        self.pageControl.numberOfPages = ceil(self.collectionView.contentSize.width / self.collectionView.bounds.size.width);
-        
-        [self.collectionView setContentOffset:CGPointMake(_topContentInsect, 0) animated:NO];
-        
-        //make sure the first item before rotation is still visible after rotating
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            int countInAPage = [[self.collectionView indexPathsForVisibleItems] count];
-            int pageOffset = floor(_firstIndexBeforeRotation/countInAPage);
-            [self.collectionView
-             setContentOffset:CGPointMake(pageOffset * self.view.bounds.size.width, 0) animated:NO];
-        });
-    }
+    [self.collectionView setContentOffset:CGPointMake(_topContentInsect, 0) animated:NO];
     
-    //Important!
-    [self.collectionView.collectionViewLayout invalidateLayout];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.pageControl.numberOfPages = ceil((double)[self.applications count] /  [self.collectionView.visibleCells count]);
+    });
 }
 
 
@@ -192,8 +165,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ApplicationSmallCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellId
-                                                                           forIndexPath:indexPath];
-
+                                                                                forIndexPath:indexPath];
     if(cell)
     {
         //Visual
@@ -213,7 +185,6 @@ static NSString *const cellId = @"ApplicationSmallCell";
     }
 
     return cell;
-
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -236,7 +207,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     {
         CATransition *animation=[CATransition animation];
         [animation setDelegate:self];
-        [animation setDuration:0.5];
+        [animation setDuration:0.6];
         [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
         [animation setType:@"rippleEffect"];
         
@@ -246,7 +217,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
         [cell.layer addAnimation:animation forKey:nil];
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //Logical
         MDMApplication *app = [self.applications objectAtIndex:indexPath.item];
         if(app && app.url != nil)
@@ -308,18 +279,5 @@ static NSString *const cellId = @"ApplicationSmallCell";
         self.bouncingImmediately = NO;
     }
 }
-
-/*#pragma mark - Private Methods
-- (void) cleanMask
-{
-    NSArray *cells = [self.collectionView visibleCells];
-    for(UICollectionViewCell *cell in cells)
-    {
-        for(UIView *sub in cell.subviews){
-            if(sub.tag == CELL_SELECTED_MASK_VIEW_TAG)
-                [sub removeFromSuperview];
-        }
-    }
-}*/
 
 @end

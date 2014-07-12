@@ -119,9 +119,9 @@ typedef void (^completion)(BOOL success);
 
 #pragma mark - item
 @interface BTPopUpItemView()
-@property (nonatomic, readonly) UIImage *image;
-@property (nonatomic, readonly) UIImageView *imageView;
 @property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSURL *imageUrl;
+@property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, copy) dispatch_block_t action;
 @end
 
@@ -129,7 +129,8 @@ typedef void (^completion)(BOOL success);
 - (instancetype)initWithImage:(UIImage *)image title:(NSString *)title action:(dispatch_block_t)action {
     if ((self = [super init])) {
         _title = [title copy];
-        _imageView = [[UIImageView alloc] initWithImage:image];
+        _imageUrl = nil; //default nil
+        _image = image;
         _action = [action copy];
     }
     
@@ -140,8 +141,8 @@ typedef void (^completion)(BOOL success);
 {
     if ((self = [super init])) {
         _title = [title copy];
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
-        [_imageView setImageWithURL:url placeholderImage:placeholder];
+        _imageUrl = url;
+        _image = placeholder;
         _action = [action copy];
     }
     
@@ -185,11 +186,12 @@ typedef void (^completion)(BOOL success);
 
 @property (nonatomic, copy) completion block;
 
--(instancetype)initWithImage:(UIImage *)image andFrame:(CGRect)frame andTarget:(SEL)action andID:(id)sender;
 
--(instancetype)initWithImage:(UIImage *)image andFrame:(CGRect)frame onCompletion:(completion)completionBlock;
-
--(instancetype)initWithImage:(UIImage *)image andTitle:(NSString *)aTitle andFrame:(CGRect)frame onCompletion:(completion)completionBlock;
+-(instancetype)initWithImage:(UIImage *)image
+                       orURL:(NSURL *) url
+                    andTitle:(NSString *)aTitle
+                    andFrame:(CGRect)frame
+                onCompletion:(completion)completionBlock;
 
 -(void)setRippleEffectWithColor:(UIColor *)color;
 -(void)setRippeEffect:(BOOL)effect;
@@ -207,10 +209,23 @@ typedef void (^completion)(BOOL success);
     return self;
 }
 
--(void)commonInitWithImage:(UIImage *)image andTitle:(NSString *)aTitle andFrame:(CGRect) frame{
+-(void)commonInitWithImage:(UIImage *)image
+                    orURL :(NSURL *) url
+                  andTitle:(NSString *)aTitle
+                  andFrame:(CGRect) frame
+{
     
-    imageView = [[UIImageView alloc]initWithImage:image];
-    imageView.frame = CGRectMake(0, 0, frame.size.width - 10, frame.size.height - 10);
+    if(url == nil)
+    {
+        imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = CGRectMake(0, 0, frame.size.width - 10, frame.size.height - 10);
+    }
+    else
+    {
+        imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 10, frame.size.height - 10)];
+        [imageView setImageWithURL:url placeholderImage:image];
+    }
+    
     imageView.layer.borderColor = [UIColor clearColor].CGColor;
     imageView.layer.borderWidth = 3;
     imageView.clipsToBounds = YES;
@@ -232,38 +247,16 @@ typedef void (^completion)(BOOL success);
 }
 
 -(instancetype)initWithImage:(UIImage *)image
+                       orURL:(NSURL *) url
+                    andTitle:(NSString *)aTitle
                     andFrame:(CGRect)frame
-                   andTarget:(SEL)action
-                       andID:(id)sender {
-    self = [super initWithFrame:frame];
+                onCompletion:(completion)completionBlock{
     
-    if(self){
-        [self commonInitWithImage:image andTitle:nil andFrame:frame];
-        methodName = action;
-        superSender = sender;
-    }
-    
-    return self;
-}
-
--(instancetype)initWithImage:(UIImage *)image andFrame:(CGRect)frame onCompletion:(completion)completionBlock {
     self = [super initWithFrame:frame];
     
     if(self){
         
-        [self commonInitWithImage:image andTitle:nil andFrame:frame];
-        self.block = completionBlock;
-    }
-    
-    return self;
-}
-
--(instancetype)initWithImage:(UIImage *)image andTitle:(NSString *)aTitle andFrame:(CGRect)frame onCompletion:(completion)completionBlock {
-    self = [super initWithFrame:frame];
-    
-    if(self){
-        
-        [self commonInitWithImage:image andTitle:aTitle andFrame:frame];
+        [self commonInitWithImage:image orURL:url andTitle:aTitle andFrame:frame];
         self.block = completionBlock;
     }
     
@@ -489,7 +482,12 @@ typedef void (^completion)(BOOL success);
 
 
 -(void)addButton:(BTPopUpItemView*) item xAxis:(CGFloat)x yAxis:(CGFloat)y {
-    btRippleButtton *button = [[btRippleButtton alloc]initWithImage:item.imageView.image andTitle:item.title andFrame:CGRectMake(x, y, itemSize.width, itemSize.height) onCompletion:[item.action copy]];
+    
+    btRippleButtton *button = [[btRippleButtton alloc] initWithImage:item.image
+                                                               orURL:item.imageUrl
+                                                            andTitle:item.title
+                                                            andFrame:CGRectMake(x, y, itemSize.width, itemSize.height)
+                                                        onCompletion:[item.action copy]];
     [button setRippeEffect:YES];
     [scrollView addSubview:button];
 }

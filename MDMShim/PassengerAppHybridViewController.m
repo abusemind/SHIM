@@ -26,16 +26,7 @@
 
 @implementation PassengerAppHybridViewController
 
-/**
- Override
- */
-- (void)createGapView
-{
-    [super createGapView];
-
-    [self.webView setDataDetectorTypes:UIDataDetectorTypeAll];
-}
-
+#pragma mark - Setup
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -51,9 +42,16 @@
 {
     [super viewDidAppear:animated];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setupMenuButton];
     });
+}
+
+- (void)createGapView
+{
+    [super createGapView];
+    
+    [self.webView setDataDetectorTypes:UIDataDetectorTypeAll];
 }
 
 - (void)setPassengerApp:(MDMApplication *)passengerApp
@@ -76,7 +74,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     BOOL shouldLoad = [super webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
-    if([request.URL.path hasPrefix:@"The prefix indicates a redirect to login screen"]) {
+    if([request.URL.path hasPrefix:@"TODO:The prefix indicates a redirect to login screen"]) {
         //Present re-auth screen
         return NO;
     }
@@ -84,7 +82,7 @@
     return shouldLoad;
 }
 
-#pragma mark - Menus
+#pragma mark - Menu & Menu's actions
 - (void) setupMenuButton
 {
     _menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -95,10 +93,10 @@
     
     CGFloat size = CDV_IsIPad()? 52:44;
     _menuBtn.frame = CGRectMake(self.view.bounds.size.width - size - 8, self.view.bounds.size.height - size - 8, size, size);
-    _menuBtn.alpha = 0.9;
+    _menuBtn.alpha = 0.95;
     _menuBtn.tintColor = MS_DARK_BLUE_100;
     
-    _menuBtn.layer.cornerRadius = 8;
+    _menuBtn.layer.cornerRadius = 7;
     _menuBtn.layer.masksToBounds = YES;
     
     [self.view addSubview:_menuBtn];
@@ -128,9 +126,7 @@
 
 - (void) showWelcomeScreen
 {
-    WelcomeScreenViewController * welcomeScreen =
-        (WelcomeScreenViewController *) self.presentingViewController;
-    
+    WelcomeScreenViewController * welcomeScreen = (WelcomeScreenViewController *) self.presentingViewController;
     welcomeScreen.passengerAppToOpen = nil;
     welcomeScreen.bouncingImmediately= NO;
     
@@ -140,15 +136,13 @@
 - (void) showOtherApps
 {
     if(self.allApps == nil || [self.allApps count] == 0){
-        DLog(@"No other applications to show");
+        DLog(@"No other applications to present");
         return;
     }
-    
     
     UIImage *placeholderImageForPassengerApps = [UIImage imageNamed:@"application.png"];
     NSMutableArray *menuItems = [NSMutableArray new];
     for(MDMApplication *app in self.allApps){
-        
         if(self.passengerApp.appId == app.appId)
         {
             continue;
@@ -160,9 +154,7 @@
                                                 title:app.name
                                                action:^{
             
-            WelcomeScreenViewController * welcomeScreen =
-            (WelcomeScreenViewController *) self.presentingViewController;
-            
+            WelcomeScreenViewController * welcomeScreen = (WelcomeScreenViewController *) self.presentingViewController;
             welcomeScreen.passengerAppToOpen = app;
             welcomeScreen.bouncingImmediately= YES;
             
@@ -179,7 +171,7 @@
 
 - (void) logout
 {
-    DLog(@"Logout");
+    DLog(@"TODO:Logout");
 }
 
 #pragma mark - rotate
@@ -199,10 +191,9 @@
     
     _menuBtn.userInteractionEnabled = YES;
     _menuBtn.hidden = NO;
-    
 }
 
-#pragma mark - Scroll View
+#pragma mark - ScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     _menuBtn.userInteractionEnabled = NO;
