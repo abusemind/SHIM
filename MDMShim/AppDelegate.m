@@ -18,7 +18,7 @@
     [MSPasteboardSharedLogger enable];
 #endif
     
-    
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     return YES;
 }
 							

@@ -13,23 +13,12 @@
 		FF72402D197049C0002A8A1C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF72402C197049C0002A8A1C /* MobileCoreServices.framework */; };
 		FF72403219704A19002A8A1C /* PassengerAppHybridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72403119704A19002A8A1C /* PassengerAppHybridViewController.m */; };
 		FF72403819704E96002A8A1C /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = FF72403719704E96002A8A1C /* config.xml */; };
-		FF72404E19705539002A8A1C /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72403C19705539002A8A1C /* AwesomeMenu.m */; };
-		FF72404F19705539002A8A1C /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72403E19705539002A8A1C /* AwesomeMenuItem.m */; };
-		FF72405019705539002A8A1C /* bg-addbutton-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404019705539002A8A1C /* bg-addbutton-highlighted.png */; };
-		FF72405119705539002A8A1C /* bg-addbutton-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404119705539002A8A1C /* bg-addbutton-highlighted@2x.png */; };
-		FF72405219705539002A8A1C /* bg-addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404219705539002A8A1C /* bg-addbutton.png */; };
-		FF72405319705539002A8A1C /* bg-addbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404319705539002A8A1C /* bg-addbutton@2x.png */; };
-		FF72405419705539002A8A1C /* bg-menuitem-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404419705539002A8A1C /* bg-menuitem-highlighted.png */; };
-		FF72405519705539002A8A1C /* bg-menuitem-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404519705539002A8A1C /* bg-menuitem-highlighted@2x.png */; };
-		FF72405619705539002A8A1C /* bg-menuitem.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404619705539002A8A1C /* bg-menuitem.png */; };
-		FF72405719705539002A8A1C /* bg-menuitem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404719705539002A8A1C /* bg-menuitem@2x.png */; };
-		FF72405819705539002A8A1C /* icon-plus-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404819705539002A8A1C /* icon-plus-highlighted.png */; };
-		FF72405919705539002A8A1C /* icon-plus-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404919705539002A8A1C /* icon-plus-highlighted@2x.png */; };
-		FF72405A19705539002A8A1C /* icon-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404A19705539002A8A1C /* icon-plus.png */; };
-		FF72405B19705539002A8A1C /* icon-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404B19705539002A8A1C /* icon-plus@2x.png */; };
-		FF72405C19705539002A8A1C /* icon-star.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404C19705539002A8A1C /* icon-star.png */; };
-		FF72405D19705539002A8A1C /* icon-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72404D19705539002A8A1C /* icon-star@2x.png */; };
 		FF7240611970F8BA002A8A1C /* SpringnyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7240601970F8BA002A8A1C /* SpringnyFlowLayout.m */; };
+		FF72406C1971079F002A8A1C /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72406A1971079F002A8A1C /* menu.png */; };
+		FF72407019711E61002A8A1C /* btSimplePopUP.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72406F19711E61002A8A1C /* btSimplePopUP.m */; };
+		FF724074197124C4002A8A1C /* apps.png in Resources */ = {isa = PBXBuildFile; fileRef = FF724071197124C4002A8A1C /* apps.png */; };
+		FF724075197124C4002A8A1C /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = FF724072197124C4002A8A1C /* home.png */; };
+		FF724076197124C4002A8A1C /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = FF724073197124C4002A8A1C /* logout.png */; };
 		FF7E2A0B196FB25300591971 /* libAppConnectLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7E29D8196FB25300591971 /* libAppConnectLibrary.a */; };
 		FF7E2A0C196FB25300591971 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7E29D9196FB25300591971 /* libcrypto.a */; };
 		FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E29E5196FB25300591971 /* JSONModel+CoreData.m */; };
@@ -102,26 +91,14 @@
 		FF72403419704C5A002A8A1C /* SegueIdentifiers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueIdentifiers.h; sourceTree = "<group>"; };
 		FF72403519704D0A002A8A1C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		FF72403719704E96002A8A1C /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
-		FF72403B19705539002A8A1C /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
-		FF72403C19705539002A8A1C /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
-		FF72403D19705539002A8A1C /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
-		FF72403E19705539002A8A1C /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
-		FF72404019705539002A8A1C /* bg-addbutton-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton-highlighted.png"; sourceTree = "<group>"; };
-		FF72404119705539002A8A1C /* bg-addbutton-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton-highlighted@2x.png"; sourceTree = "<group>"; };
-		FF72404219705539002A8A1C /* bg-addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton.png"; sourceTree = "<group>"; };
-		FF72404319705539002A8A1C /* bg-addbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton@2x.png"; sourceTree = "<group>"; };
-		FF72404419705539002A8A1C /* bg-menuitem-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-menuitem-highlighted.png"; sourceTree = "<group>"; };
-		FF72404519705539002A8A1C /* bg-menuitem-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-menuitem-highlighted@2x.png"; sourceTree = "<group>"; };
-		FF72404619705539002A8A1C /* bg-menuitem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-menuitem.png"; sourceTree = "<group>"; };
-		FF72404719705539002A8A1C /* bg-menuitem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-menuitem@2x.png"; sourceTree = "<group>"; };
-		FF72404819705539002A8A1C /* icon-plus-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-plus-highlighted.png"; sourceTree = "<group>"; };
-		FF72404919705539002A8A1C /* icon-plus-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-plus-highlighted@2x.png"; sourceTree = "<group>"; };
-		FF72404A19705539002A8A1C /* icon-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-plus.png"; sourceTree = "<group>"; };
-		FF72404B19705539002A8A1C /* icon-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-plus@2x.png"; sourceTree = "<group>"; };
-		FF72404C19705539002A8A1C /* icon-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-star.png"; sourceTree = "<group>"; };
-		FF72404D19705539002A8A1C /* icon-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-star@2x.png"; sourceTree = "<group>"; };
 		FF72405F1970F8BA002A8A1C /* SpringnyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringnyFlowLayout.h; sourceTree = "<group>"; };
 		FF7240601970F8BA002A8A1C /* SpringnyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringnyFlowLayout.m; sourceTree = "<group>"; };
+		FF72406A1971079F002A8A1C /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		FF72406E19711E61002A8A1C /* btSimplePopUP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btSimplePopUP.h; sourceTree = "<group>"; };
+		FF72406F19711E61002A8A1C /* btSimplePopUP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = btSimplePopUP.m; sourceTree = "<group>"; };
+		FF724071197124C4002A8A1C /* apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apps.png; sourceTree = "<group>"; };
+		FF724072197124C4002A8A1C /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		FF724073197124C4002A8A1C /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		FF7E29D4196FB25300591971 /* ACError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACError.h; sourceTree = "<group>"; };
 		FF7E29D5196FB25300591971 /* ACFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACFileHandle.h; sourceTree = "<group>"; };
 		FF7E29D6196FB25300591971 /* ACSecureFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSecureFile.h; sourceTree = "<group>"; };
@@ -277,51 +254,18 @@
 			path = MDMShim/Resources;
 			sourceTree = "<group>";
 		};
-		FF72403919705539002A8A1C /* Path-meun */ = {
+		FF72406D19711E1D002A8A1C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				FF72403A19705539002A8A1C /* AwesomeMenu */,
-				FF72403F19705539002A8A1C /* Images */,
+				FF72406E19711E61002A8A1C /* btSimplePopUP.h */,
+				FF72406F19711E61002A8A1C /* btSimplePopUP.m */,
 			);
-			path = "Path-meun";
-			sourceTree = "<group>";
-		};
-		FF72403A19705539002A8A1C /* AwesomeMenu */ = {
-			isa = PBXGroup;
-			children = (
-				FF72403B19705539002A8A1C /* AwesomeMenu.h */,
-				FF72403C19705539002A8A1C /* AwesomeMenu.m */,
-				FF72403D19705539002A8A1C /* AwesomeMenuItem.h */,
-				FF72403E19705539002A8A1C /* AwesomeMenuItem.m */,
-			);
-			path = AwesomeMenu;
-			sourceTree = "<group>";
-		};
-		FF72403F19705539002A8A1C /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				FF72404019705539002A8A1C /* bg-addbutton-highlighted.png */,
-				FF72404119705539002A8A1C /* bg-addbutton-highlighted@2x.png */,
-				FF72404219705539002A8A1C /* bg-addbutton.png */,
-				FF72404319705539002A8A1C /* bg-addbutton@2x.png */,
-				FF72404419705539002A8A1C /* bg-menuitem-highlighted.png */,
-				FF72404519705539002A8A1C /* bg-menuitem-highlighted@2x.png */,
-				FF72404619705539002A8A1C /* bg-menuitem.png */,
-				FF72404719705539002A8A1C /* bg-menuitem@2x.png */,
-				FF72404819705539002A8A1C /* icon-plus-highlighted.png */,
-				FF72404919705539002A8A1C /* icon-plus-highlighted@2x.png */,
-				FF72404A19705539002A8A1C /* icon-plus.png */,
-				FF72404B19705539002A8A1C /* icon-plus@2x.png */,
-				FF72404C19705539002A8A1C /* icon-star.png */,
-				FF72404D19705539002A8A1C /* icon-star@2x.png */,
-			);
-			path = Images;
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		FF7E29D2196FB25300591971 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				FF72403919705539002A8A1C /* Path-meun */,
 				FF7E29D3196FB25300591971 /* AppConnect */,
 				FF7E29E2196FB25300591971 /* JSONModel */,
 				FF7E29FE196FB25300591971 /* SSZipArchive */,
@@ -459,6 +403,7 @@
 		FF7E2A2D196FC0E300591971 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF72406D19711E1D002A8A1C /* Menu */,
 				FF7E2A2A196FC0DF00591971 /* MSCycleProgressView.h */,
 				FF7E2A2B196FC0DF00591971 /* MSCycleProgressView.m */,
 				FF7E2A35196FC69C00591971 /* ApplicationSmallCell.h */,
@@ -491,6 +436,10 @@
 		FF7E2A42196FE46700591971 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF724071197124C4002A8A1C /* apps.png */,
+				FF724072197124C4002A8A1C /* home.png */,
+				FF724073197124C4002A8A1C /* logout.png */,
+				FF72406A1971079F002A8A1C /* menu.png */,
 				FF7E2A43196FE46700591971 /* application.png */,
 			);
 			path = Images;
@@ -683,27 +632,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF72405C19705539002A8A1C /* icon-star.png in Resources */,
-				FF72405619705539002A8A1C /* bg-menuitem.png in Resources */,
-				FF72405219705539002A8A1C /* bg-addbutton.png in Resources */,
-				FF72405319705539002A8A1C /* bg-addbutton@2x.png in Resources */,
-				FF72405B19705539002A8A1C /* icon-plus@2x.png in Resources */,
-				FF72405019705539002A8A1C /* bg-addbutton-highlighted.png in Resources */,
-				FF72405A19705539002A8A1C /* icon-plus.png in Resources */,
-				FF72405819705539002A8A1C /* icon-plus-highlighted.png in Resources */,
-				FF72405119705539002A8A1C /* bg-addbutton-highlighted@2x.png in Resources */,
-				FF72405719705539002A8A1C /* bg-menuitem@2x.png in Resources */,
-				FF72405D19705539002A8A1C /* icon-star@2x.png in Resources */,
-				FF72405919705539002A8A1C /* icon-plus-highlighted@2x.png in Resources */,
 				FFB301CD196F8344001FE814 /* Main_iPad.storyboard in Resources */,
+				FF72406C1971079F002A8A1C /* menu.png in Resources */,
+				FF724074197124C4002A8A1C /* apps.png in Resources */,
 				FF72403819704E96002A8A1C /* config.xml in Resources */,
-				FF72405419705539002A8A1C /* bg-menuitem-highlighted.png in Resources */,
 				FFB301D2196F8344001FE814 /* Images.xcassets in Resources */,
 				FF7E2A44196FE46700591971 /* application.png in Resources */,
+				FF724075197124C4002A8A1C /* home.png in Resources */,
+				FF724076197124C4002A8A1C /* logout.png in Resources */,
 				FFB301CA196F8344001FE814 /* Main_iPhone.storyboard in Resources */,
 				FF7E2A41196FE0C300591971 /* ApplicationSmallCell.xib in Resources */,
 				FFB301C1196F8344001FE814 /* InfoPlist.strings in Resources */,
-				FF72405519705539002A8A1C /* bg-menuitem-highlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +662,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF7E2A11196FB25300591971 /* JSONModelError.m in Sources */,
-				FF72404F19705539002A8A1C /* AwesomeMenuItem.m in Sources */,
 				FF7E2A12196FB25300591971 /* NSArray+JSONModel.m in Sources */,
 				FF7E2A19196FB25300591971 /* mztools.c in Sources */,
 				FF7E2A34196FC58600591971 /* WelcomeScreenViewController.m in Sources */,
@@ -733,6 +671,7 @@
 				FF72403219704A19002A8A1C /* PassengerAppHybridViewController.m in Sources */,
 				FF7E2A10196FB25300591971 /* JSONModelClassProperty.m in Sources */,
 				FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */,
+				FF72407019711E61002A8A1C /* btSimplePopUP.m in Sources */,
 				FFB301D0196F8344001FE814 /* LoadingViewController.m in Sources */,
 				FF7240611970F8BA002A8A1C /* SpringnyFlowLayout.m in Sources */,
 				FF7E2A16196FB25300591971 /* JSONKeyMapper.m in Sources */,
@@ -745,7 +684,6 @@
 				FF7E2A18196FB25300591971 /* ioapi.c in Sources */,
 				FF7E2A1A196FB25300591971 /* unzip.c in Sources */,
 				FFB301C3196F8344001FE814 /* main.m in Sources */,
-				FF72404E19705539002A8A1C /* AwesomeMenu.m in Sources */,
 				FF7240271970487C002A8A1C /* BaseHybridViewController.m in Sources */,
 				FF7E2A13196FB25300591971 /* JSONAPI.m in Sources */,
 				FF7E2A17196FB25300591971 /* JSONValueTransformer.m in Sources */,

@@ -7,36 +7,20 @@
 //
 
 #import "PassengerAppHybridViewController.h"
-#import "AwesomeMenu.h"
-#import "AwesomeMenuItem.h"
+#import "btSimplePopUP.h"
 
-@interface PassengerAppHybridViewController () <AwesomeMenuDelegate>
+@interface PassengerAppHybridViewController () <UIScrollViewDelegate>
 {
-    AwesomeMenu *_menu;
+    UIButton *_menuBtn;
+    BOOL _isScrolling;
+    
+    UIImage *_home;
+    UIImage *_apps;
+    UIImage *_logout;
 }
-
 @end
 
 @implementation PassengerAppHybridViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if(self) {
-        // Custom initialization
-    }
-    
-    return self;
-}
 
 /**
  Override
@@ -51,58 +35,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //setup menu
     
-    [self setupMenu];
-}
-
-- (void) setupMenu
-{
-    UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
-    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
-    UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
+    self.webView.scrollView.delegate = self;
     
-    AwesomeMenuItem *home = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *logout = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *otherApps = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *settings = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];
+    _home = [[UIImage imageNamed:@"home.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    _apps = [[UIImage imageNamed:@"apps.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    _logout = [[UIImage imageNamed:@"logout.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
-    NSArray *menus = [NSArray arrayWithObjects:home, logout, otherApps, settings, nil];
-    
-    AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
-                                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
-                                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"]
-                                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
-    
-    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds startItem:startItem optionMenus:menus];
-    
-    menu.delegate = self;
-    
-	menu.menuWholeAngle = M_PI ;
-	menu.farRadius = 100.0f;
-	menu.endRadius = 80.0f;
-	menu.nearRadius = 70.0f;
-    menu.animationDuration = 0.35f;
-    menu.startPoint = CGPointMake(self.view.bounds.size.width/2.0, self.view.bounds.size.height - 35);
-    menu.timeOffset = 0.036f;
-    menu.rotateAngle = -M_PI_2;
-    
-    _menu = menu;
-    
-    [self.view addSubview:_menu];
-    [self.view bringSubviewToFront:_menu];
+    [self setupMenuButton];
 }
 
 - (void)setPassengerApp:(MDMApplication *)passengerApp
@@ -133,24 +73,92 @@
     return shouldLoad;
 }
 
-#pragma mark - Menu Button
-- (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
+#pragma mark - Menu
+- (void) setupMenuButton
 {
-    //NSLog(@"Select the index : %d",idx);
-    if(idx == 0){
-        [self performSegueWithIdentifier:SEGUE_WELCOME_SCREEN sender:self];
-    }
+    _menuBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_menuBtn addTarget:self action:@selector(hitMenuButtonOnWebView:)
+                forControlEvents:UIControlEventTouchUpInside];
+    
+    [_menuBtn setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
+    
+    CGFloat size = CDV_IsIPad()? 36:28;
+    _menuBtn.frame = CGRectMake(10, self.view.bounds.size.height - size - 10, size, size);
+    _menuBtn.alpha = 0.75;
+    [self.view addSubview:_menuBtn];
 }
-//- (void)awesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
-//    NSLog(@"Menu was closed!");
-//}
-//- (void)awesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
-//    NSLog(@"Menu is open!");
-//}
+
+-(void) hitMenuButtonOnWebView:(id) sender
+{
+    BTPopUpItemView *home = [[BTPopUpItemView alloc] initWithImage:_home title:@"Home" action:^{
+        [self performSegueWithIdentifier:@"welcomeScreen" sender:self];
+    }];
+    
+    BTPopUpItemView *apps = [[BTPopUpItemView alloc] initWithImage:_apps title:@"Other Apps" action:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self showOtherApps];
+        });
+    }];
+    
+    BTPopUpItemView *logout = [[BTPopUpItemView alloc] initWithImage:_logout title:@"Logout" action:^{
+        [self logout];
+    }];
+    
+    NSArray *items = [NSArray arrayWithObjects:home, apps, logout, nil];
+    btSimplePopUP *mainMenu = [[btSimplePopUP alloc] initWithItems:items addToViewController:self];
+    [self.view addSubview:mainMenu];
+    [mainMenu show];
+}
+
+- (void) showMainMenu
+{
+    
+    
+    
+    
+}
+
+- (void) showOtherApps
+{
+    NSLog(@"Show Other apps");
+}
+
+- (void) logout
+{
+    NSLog(@"Logout");
+}
+
+#pragma mark - rotate
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration
+{
+    _menuBtn.userInteractionEnabled = NO;
+    _menuBtn.hidden = YES;
+}
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    _menu.startPoint = CGPointMake(self.view.bounds.size.width/2.0, self.view.bounds.size.height - 35);
-    [self.view setNeedsLayout];
+    
+    CGRect rect = _menuBtn.frame;
+    rect.origin.x = 10;
+    rect.origin.y = self.view.bounds.size.height - rect.size.height - 10;
+    _menuBtn.frame = rect;
+    
+    _menuBtn.userInteractionEnabled = YES;
+    _menuBtn.hidden = NO;
+    
+}
+
+#pragma mark - Scroll View
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    _menuBtn.userInteractionEnabled = NO;
+    _menuBtn.hidden = YES;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    _menuBtn.userInteractionEnabled = YES;
+    _menuBtn.hidden = NO;
 }
 
 @end

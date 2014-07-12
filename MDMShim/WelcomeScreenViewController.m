@@ -93,7 +93,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
 
 - (void) setupFakeData
 {
-    NSArray *urls = @[@"www.sina.com", @"www.baidu.com", @"www.youku.com", @"www.sohu.com"];
+    NSArray *urls = @[@"www.sina.com", @"www.google.com", @"www.youku.com", @"www.sohu.com"];
     
     self.applications = [NSMutableArray new];
     
