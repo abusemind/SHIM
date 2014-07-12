@@ -144,6 +144,8 @@
         return;
     }
     
+    
+    UIImage *placeholderImageForPassengerApps = [UIImage imageNamed:@"application.png"];
     NSMutableArray *menuItems = [NSMutableArray new];
     for(MDMApplication *app in self.allApps){
         
@@ -152,16 +154,19 @@
             continue;
         }
         
-        BTPopUpItemView *menuItem = [[BTPopUpItemView alloc] initWithImage:[UIImage imageNamed:@"application.png"] title:app.name action:^{
+        BTPopUpItemView *menuItem =
+            [[BTPopUpItemView alloc] initWithImageURL:[NSURL URLWithString:app.iconUrl]
+                                     placeholderImage:placeholderImageForPassengerApps
+                                                title:app.name
+                                               action:^{
             
             WelcomeScreenViewController * welcomeScreen =
-                (WelcomeScreenViewController *) self.presentingViewController;
+            (WelcomeScreenViewController *) self.presentingViewController;
             
             welcomeScreen.passengerAppToOpen = app;
             welcomeScreen.bouncingImmediately= YES;
             
             [self dismissViewControllerAnimated:YES completion:nil];
-            
         }];
         
         [menuItems addObject:menuItem];

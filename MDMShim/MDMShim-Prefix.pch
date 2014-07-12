@@ -16,4 +16,5 @@
 
     #import <Cordova/CDVDebug.h>
     #import "Constants.h"
+    #import "UIImageView+WebCache.h"
 #endif

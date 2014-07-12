@@ -37,7 +37,6 @@ static NSString *const cellId = @"ApplicationSmallCell";
 @property (weak, nonatomic) IBOutlet UILabel *enterpriseAppStore;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-
 @property (weak, nonatomic) IBOutlet UIView *bannerView;
 
 
@@ -140,6 +139,9 @@ static NSString *const cellId = @"ApplicationSmallCell";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.pageControl.numberOfPages = ceil(self.collectionView.contentSize.width / self.collectionView.bounds.size.width);
     });
+    
+    
+    
 }
 
 #pragma mark - Rotate
@@ -194,17 +196,20 @@ static NSString *const cellId = @"ApplicationSmallCell";
 
     if(cell)
     {
+        //Visual
+        cell.appTitleLabel.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor clearColor];
+        
+        //Logical
         MDMApplication *app = [self.applications objectAtIndex:indexPath.item];
         if(app)
         {
             cell.appTitleLabel.text = app.name;
             cell.description.text = app.description;
             cell.description.backgroundColor = [UIColor clearColor];
-            cell.appIcon.image = [UIImage imageNamed:@"application.png"];
+            [cell.appIcon setImageWithURL:[NSURL URLWithString:app.iconUrl]
+                           placeholderImage:[UIImage imageNamed:@"application.png"] options:0];
         }
-        
-        cell.appTitleLabel.backgroundColor = [UIColor clearColor];
-        cell.backgroundColor = [UIColor clearColor];
     }
 
     return cell;
@@ -250,8 +255,6 @@ static NSString *const cellId = @"ApplicationSmallCell";
             [self launchPassengerApp];
         }
     });
-    
-    
 }
 
 #pragma mark - Scroll view delegate (To Update PageControl's current page)

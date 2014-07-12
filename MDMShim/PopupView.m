@@ -129,7 +129,19 @@ typedef void (^completion)(BOOL success);
 - (instancetype)initWithImage:(UIImage *)image title:(NSString *)title action:(dispatch_block_t)action {
     if ((self = [super init])) {
         _title = [title copy];
-        _imageView = [[UIImageView alloc]initWithImage:image];
+        _imageView = [[UIImageView alloc] initWithImage:image];
+        _action = [action copy];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithImageURL: (NSURL *) url placeholderImage: (UIImage *) placeholder title:(NSString *)title action:(dispatch_block_t)action
+{
+    if ((self = [super init])) {
+        _title = [title copy];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
+        [_imageView setImageWithURL:url placeholderImage:placeholder];
         _action = [action copy];
     }
     

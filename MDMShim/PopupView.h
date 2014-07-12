@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, BTPopUpBorderStyle) {
 @interface BTPopUpItemView : UIView
 
 - (instancetype)initWithImage:(UIImage *)image title:(NSString *)title action:(dispatch_block_t)action;
+- (instancetype)initWithImageURL: (NSURL *) url placeholderImage: (UIImage *) placeholder title:(NSString *)title action:(dispatch_block_t)action;
 
 @end
 

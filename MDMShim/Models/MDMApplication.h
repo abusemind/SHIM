@@ -13,6 +13,7 @@
 @property (nonatomic, assign) int appId;
 @property (nonatomic, strong) NSString<Optional> *name;
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *iconUrl;
 @property (nonatomic, strong) NSString *description;
 
 @end
