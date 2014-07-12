@@ -29,8 +29,8 @@
         for(UICollectionViewLayoutAttributes *item in items){
             UIAttachmentBehavior *spring = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:item.center];
             spring.length = 0;
-            spring.damping = 0.75;
-            spring.frequency = 0.9;
+            spring.damping = 0.9;
+            spring.frequency = 0.95;
             
             [_dynamicAnimator addBehavior:spring];
         }
@@ -60,7 +60,7 @@
     for(UIAttachmentBehavior *spring in [_dynamicAnimator behaviors]){
         CGPoint anchorPoint = spring.anchorPoint;
         CGFloat distanceFromTouch = fabsf(touchLocation.y - anchorPoint.y); //float absolute value
-        CGFloat scrollResistence = distanceFromTouch / 568;
+        CGFloat scrollResistence = distanceFromTouch / 988;
         
         UICollectionViewLayoutAttributes *item = [spring.items firstObject];
         

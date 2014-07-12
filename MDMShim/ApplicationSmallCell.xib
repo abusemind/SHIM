@@ -19,12 +19,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFJ-zJ-POl">
-                    <rect key="frame" x="66" y="20" width="245" height="21"/>
+                    <rect key="frame" x="66" y="7" width="245" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="zsM-oB-0lx"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" red="0.26982824025148333" green="0.44544935066083374" blue="0.74070142663043481" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -45,7 +45,7 @@
                 <constraint firstAttribute="trailing" secondItem="Zfb-Wl-Hrq" secondAttribute="trailing" id="eOs-wv-jvV"/>
                 <constraint firstAttribute="bottom" secondItem="Zfb-Wl-Hrq" secondAttribute="bottom" id="fQM-d7-Z4U"/>
                 <constraint firstAttribute="trailing" secondItem="iFJ-zJ-POl" secondAttribute="trailing" constant="20" id="g4b-hE-dCc"/>
-                <constraint firstItem="iFJ-zJ-POl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="rLY-Tj-0qw"/>
+                <constraint firstItem="iFJ-zJ-POl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="rLY-Tj-0qw"/>
                 <constraint firstItem="2QB-pm-Wu2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="sRh-S2-HEf"/>
                 <constraint firstItem="Zfb-Wl-Hrq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w5J-2Q-iEH"/>
             </constraints>

@@ -420,8 +420,10 @@ typedef void (^completion)(BOOL success);
     
     pageControl.numberOfPages = pages;
     pageControl.currentPage = 0;
-    if(pageControl.numberOfPages == 1)
+    if(pageControl.numberOfPages == 1){
         pageControl.hidden = YES;
+        scrollView.scrollEnabled = NO;
+    }
     
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * pages, 0);
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -538,22 +540,32 @@ typedef void (^completion)(BOOL success);
 }
 
 -(void)show {
-    contentView.userInteractionEnabled = NO;
-    [UIView animateWithDuration:0.08 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:30 options:0 animations:^{
+
+    self.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.32 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:30 options:0 animations:^{
         self.alpha = 1;
         backGroundBlurr.alpha = 1;
         contentView.center = self.center;
     } completion:^(BOOL finished){
-        contentView.userInteractionEnabled = YES;
+        
+        //avoid mis click to dismiss unintentionally
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.userInteractionEnabled = YES;
+        });
     }];
 }
 
 -(void)dismiss {
-    [UIView animateWithDuration:0.02 animations:^{
-        contentView.alpha = 0;
+    
+    self.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.2 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:30 options:0 animations:^{
+        contentView.alpha = 0.1;
         backGroundBlurr.alpha = 0;
         self.alpha = 0;
-    }completion:^(BOOL finished) {
+        CGRect rect = contentView.frame;
+        rect.origin.y = self.bounds.size.height;
+        contentView.frame = rect;
+    } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
 }
