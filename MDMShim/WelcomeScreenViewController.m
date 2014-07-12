@@ -15,6 +15,7 @@
 
 //If you want to support landscape in iPhone for this welcome screen, set to NO
 #define USE_SPRINGNI_IN_IPHONE YES
+#define CELL_SELECTED_MASK_VIEW_TAG 3356
 
 static NSString *const cellId = @"ApplicationSmallCell";
 
@@ -204,9 +205,6 @@ static NSString *const cellId = @"ApplicationSmallCell";
         
         cell.appTitleLabel.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [UIColor clearColor];
-        //For debug:
-        //cell.layer.borderColor = [UIColor blackColor].CGColor;
-        //cell.layer.borderWidth = 1.0;
     }
 
     return cell;
@@ -227,12 +225,33 @@ static NSString *const cellId = @"ApplicationSmallCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    MDMApplication *app = [self.applications objectAtIndex:indexPath.item];
-    if(app && app.url != nil)
+    //Visual
+    ApplicationSmallCell *cell = (ApplicationSmallCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if(cell.selected)
     {
-        self.passengerAppToOpen = app;
-        [self launchPassengerApp];
+        CATransition *animation=[CATransition animation];
+        [animation setDelegate:self];
+        [animation setDuration:0.5];
+        [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
+        [animation setType:@"rippleEffect"];
+        
+        [animation setFillMode:kCAFillModeRemoved];
+        animation.endProgress=0.99;
+        [animation setRemovedOnCompletion:NO];
+        [cell.layer addAnimation:animation forKey:nil];
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //Logical
+        MDMApplication *app = [self.applications objectAtIndex:indexPath.item];
+        if(app && app.url != nil)
+        {
+            self.passengerAppToOpen = app;
+            [self launchPassengerApp];
+        }
+    });
+    
+    
 }
 
 #pragma mark - Scroll view delegate (To Update PageControl's current page)
@@ -286,5 +305,18 @@ static NSString *const cellId = @"ApplicationSmallCell";
         self.bouncingImmediately = NO;
     }
 }
+
+/*#pragma mark - Private Methods
+- (void) cleanMask
+{
+    NSArray *cells = [self.collectionView visibleCells];
+    for(UICollectionViewCell *cell in cells)
+    {
+        for(UIView *sub in cell.subviews){
+            if(sub.tag == CELL_SELECTED_MASK_VIEW_TAG)
+                [sub removeFromSuperview];
+        }
+    }
+}*/
 
 @end

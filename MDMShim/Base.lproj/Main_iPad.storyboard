@@ -100,7 +100,7 @@
                         <outlet property="enterpriseAppStore" destination="bYH-fB-36V" id="c4a-z8-BVC"/>
                         <outlet property="morganstanley" destination="UFc-rV-2c1" id="Dkt-bE-gAj"/>
                         <outlet property="pageControl" destination="Wyx-uI-rFM" id="04y-C4-nac"/>
-                        <segue destination="qke-Oz-XYm" kind="modal" identifier="launchPassengerApp" modalTransitionStyle="coverVertical" id="2F3-lw-pbq"/>
+                        <segue destination="qke-Oz-XYm" kind="modal" identifier="launchPassengerApp" modalTransitionStyle="crossDissolve" id="2F3-lw-pbq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Aj-GW-4ti" userLabel="First Responder" sceneMemberID="firstResponder"/>

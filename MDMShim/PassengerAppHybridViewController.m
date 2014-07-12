@@ -93,10 +93,13 @@
     
     [_menuBtn setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     
-    CGFloat size = CDV_IsIPad()? 48:40;
+    CGFloat size = CDV_IsIPad()? 52:44;
     _menuBtn.frame = CGRectMake(self.view.bounds.size.width - size - 8, self.view.bounds.size.height - size - 8, size, size);
     _menuBtn.alpha = 0.9;
     _menuBtn.tintColor = MS_DARK_BLUE_100;
+    
+    _menuBtn.layer.cornerRadius = 8;
+    _menuBtn.layer.masksToBounds = YES;
     
     [self.view addSubview:_menuBtn];
 }
@@ -201,7 +204,15 @@
     _menuBtn.hidden = YES;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(!decelerate){
+        _menuBtn.userInteractionEnabled = YES;
+        _menuBtn.hidden = NO;
+    }
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     _menuBtn.userInteractionEnabled = YES;
     _menuBtn.hidden = NO;
