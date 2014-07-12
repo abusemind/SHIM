@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "MDMApplication.h"
+
 @interface WelcomeScreenViewController : UIViewController
     <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-
+@property (strong, nonatomic) MDMApplication *passengerAppToOpen;
+@property (nonatomic, strong) NSMutableArray *applications;
+@property (nonatomic, assign) BOOL bouncingImmediately;
 
 @end

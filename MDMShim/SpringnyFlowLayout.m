@@ -29,8 +29,8 @@
         for(UICollectionViewLayoutAttributes *item in items){
             UIAttachmentBehavior *spring = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:item.center];
             spring.length = 0;
-            spring.damping = 0.7;
-            spring.frequency = 0.9;
+            spring.damping = 0.6;
+            spring.frequency = 0.8;
             
             [_dynamicAnimator addBehavior:spring];
         }
@@ -78,7 +78,7 @@
         [_dynamicAnimator updateItemUsingCurrentState:item];
     }
     
-    return NO;
+    return [super shouldInvalidateLayoutForBoundsChange:newBounds];
 }
 
 @end

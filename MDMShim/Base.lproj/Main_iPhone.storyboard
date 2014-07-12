@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZX-Y3-c4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="-27"/>
+            <point key="canvasLocation" x="634" y="-42"/>
         </scene>
         <!--Passenger App Hybrid View Controller-->
         <scene sceneID="zJH-oT-3TO">
@@ -138,13 +138,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="afq-N8-F5z" kind="modal" identifier="welcomeScreen" modalTransitionStyle="crossDissolve" id="Vnd-jR-ah0"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umg-mk-bxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1382" y="-15"/>
+            <point key="canvasLocation" x="1198" y="-42"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -152,7 +149,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Vnd-jR-ah0"/>
-    </inferredMetricsTieBreakers>
 </document>

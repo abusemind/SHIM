@@ -12,5 +12,6 @@
 @interface PassengerAppHybridViewController : BaseHybridViewController
 
 @property (strong, nonatomic) MDMApplication *passengerApp;
+@property (strong, nonatomic) NSArray *allApps;
 
 @end

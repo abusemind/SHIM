@@ -10,7 +10,7 @@
 
 @interface MDMApplication : JSONModel
 
-@property (nonatomic, assign) int id;
+@property (nonatomic, assign) int appId;
 @property (nonatomic, strong) NSString<Optional> *name;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *description;

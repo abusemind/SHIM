@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, BTPopUpBorderStyle) {
 @end
 
 #pragma mark - menu
-@interface btSimplePopUP : UIView <UIScrollViewDelegate>
+@interface PopupView : UIView <UIScrollViewDelegate>
 
 @property (nonatomic, assign) BTPopUpStyle popUpStyle;
 @property (nonatomic, assign) BTPopUpBorderStyle popUpBorderStyle;

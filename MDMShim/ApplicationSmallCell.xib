@@ -29,7 +29,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="description" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-Wl-Hrq">
-                    <rect key="frame" x="10" y="59" width="321" height="121"/>
+                    <rect key="frame" x="0.0" y="59" width="331" height="121"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,15 +39,15 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Zfb-Wl-Hrq" secondAttribute="bottom" id="DhM-iu-LoL"/>
-                <constraint firstAttribute="trailing" secondItem="Zfb-Wl-Hrq" secondAttribute="trailing" id="Div-ux-0lt"/>
-                <constraint firstItem="Zfb-Wl-Hrq" firstAttribute="top" secondItem="2QB-pm-Wu2" secondAttribute="bottom" constant="1" id="KJL-Rl-9qC"/>
-                <constraint firstItem="Zfb-Wl-Hrq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Uxx-9r-P9a"/>
+                <constraint firstItem="Zfb-Wl-Hrq" firstAttribute="top" secondItem="2QB-pm-Wu2" secondAttribute="bottom" constant="1" id="CaC-Yx-XeV"/>
                 <constraint firstItem="2QB-pm-Wu2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="WUR-r7-z2b"/>
                 <constraint firstItem="iFJ-zJ-POl" firstAttribute="leading" secondItem="2QB-pm-Wu2" secondAttribute="trailing" constant="8" id="YkG-PU-MN2"/>
+                <constraint firstAttribute="trailing" secondItem="Zfb-Wl-Hrq" secondAttribute="trailing" id="eOs-wv-jvV"/>
+                <constraint firstAttribute="bottom" secondItem="Zfb-Wl-Hrq" secondAttribute="bottom" id="fQM-d7-Z4U"/>
                 <constraint firstAttribute="trailing" secondItem="iFJ-zJ-POl" secondAttribute="trailing" constant="20" id="g4b-hE-dCc"/>
                 <constraint firstItem="iFJ-zJ-POl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="rLY-Tj-0qw"/>
                 <constraint firstItem="2QB-pm-Wu2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="sRh-S2-HEf"/>
+                <constraint firstItem="Zfb-Wl-Hrq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w5J-2Q-iEH"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

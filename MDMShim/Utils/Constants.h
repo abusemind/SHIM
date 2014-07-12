@@ -10,5 +10,6 @@
 #define MDMShim_Constants_h
 
 #import "SegueIdentifiers.h"
+#import "MSDesignColors.h"
 
 #endif

@@ -1,11 +1,11 @@
-#import "btSimplePopUP.h"
+#import "PopupView.h"
 #import <Cordova/CDVAvailability.h>
 
 typedef void (^completion)(BOOL success);
 
 #define SCREEN_SIZE [UIScreen mainScreen].bounds
 #define POPUP_WIDTH (CDV_IsIPad() ? 380: 300.0)
-#define POP_HEIGHT  (CDV_IsIPad() ? 400: 295.0)
+#define POP_HEIGHT  (CDV_IsIPad() ? 410: 305.0)
 
 #pragma mark - Blur image categories
 @interface UIView (bt_screenshot)
@@ -198,7 +198,7 @@ typedef void (^completion)(BOOL success);
 -(void)commonInitWithImage:(UIImage *)image andTitle:(NSString *)aTitle andFrame:(CGRect) frame{
     
     imageView = [[UIImageView alloc]initWithImage:image];
-    imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    imageView.frame = CGRectMake(0, 0, frame.size.width - 10, frame.size.height - 10);
     imageView.layer.borderColor = [UIColor clearColor].CGColor;
     imageView.layer.borderWidth = 3;
     imageView.clipsToBounds = YES;
@@ -209,9 +209,9 @@ typedef void (^completion)(BOOL success);
     gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
     [self addGestureRecognizer:gesture];
     
-    title = [[UILabel alloc]initWithFrame:CGRectMake(-10, frame.size.height+1, frame.size.width+20, 20)];
+    title = [[UILabel alloc]initWithFrame:CGRectMake(-15, frame.size.height+1, frame.size.width+30, 22)];
     title.backgroundColor = [UIColor clearColor];
-    title.font = [UIFont fontWithName:@"Avenir Next" size:12];
+    title.font = CDV_IsIPad()? [UIFont fontWithName:@"Avenir Next" size:15]:[UIFont fontWithName:@"Avenir Next" size:11];
     title.textAlignment = NSTextAlignmentCenter;
     title.textColor = [UIColor whiteColor];
     title.numberOfLines = 0;
@@ -329,7 +329,7 @@ typedef void (^completion)(BOOL success);
 
 #pragma mark - btSimplePopUP
 #pragma mark - @interface
-@interface btSimplePopUP ()
+@interface PopupView ()
 {
     UIImageView *backGroundBlurr;
     UIView *contentView;
@@ -343,7 +343,7 @@ typedef void (^completion)(BOOL success);
 
 @end
 #pragma mark - @implementation
-@implementation btSimplePopUP
+@implementation PopupView
 
 - (instancetype) initWithItems: (NSArray *) items addToViewController:(UIViewController*)sender
 {
@@ -359,7 +359,7 @@ typedef void (^completion)(BOOL success);
         CGRect screenSize = sender.view.bounds;
         self.frame = CGRectMake(0, 0, screenSize.size.width, screenSize.size.height);
         UIImage *screenShot = [sender.view screenshot];
-        UIImage *blurImage  = [screenShot blurredImageWithRadius:10.5 iterations:2 tintColor:nil];
+        UIImage *blurImage  = [screenShot blurredImageWithRadius:10.5 iterations:3 tintColor:nil];
         backGroundBlurr = [[UIImageView alloc]initWithImage:blurImage];
         backGroundBlurr.frame = CGRectMake(0, 0, screenSize.size.width, screenSize.size.height);
         backGroundBlurr.alpha = 0;
@@ -374,7 +374,7 @@ typedef void (^completion)(BOOL success);
         contentView = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - POPUP_WIDTH/2, screenSize.size.height, POPUP_WIDTH, POP_HEIGHT)];
         contentView.layer.cornerRadius = 40;
         contentView.clipsToBounds = YES;
-        contentView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.7];
+        contentView.backgroundColor = MS_DARK_BLUE_65;
         [self addSubview:contentView];
         self.alpha = 0;
         
@@ -391,6 +391,7 @@ typedef void (^completion)(BOOL success);
         pageControl = [[UIPageControl alloc] init];
         pageControl.frame = CGRectMake(0, 5, contentView.frame.size.width, 25);
         pageControl.backgroundColor = [UIColor clearColor];
+        pageControl.userInteractionEnabled = NO;
         [contentView addSubview:pageControl];
         
         // initialize Items
@@ -404,8 +405,6 @@ typedef void (^completion)(BOOL success);
 -(void)setUpPopItems {
     
     itemSize = CDV_IsIPad()? CGSizeMake(80.0f, 80.0f): CGSizeMake(50.0f, 50.0f);
-    itemTextColor = [UIColor whiteColor];
-    itemFont = [UIFont boldSystemFontOfSize:14.f];
     highlightColor = [UIColor colorWithRed:.02f green:.549f blue:.961f alpha:1.f];
     backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
    
@@ -530,7 +529,7 @@ typedef void (^completion)(BOOL success);
 
 -(void)show {
     contentView.userInteractionEnabled = NO;
-    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:20 options:0 animations:^{
+    [UIView animateWithDuration:0.08 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:30 options:0 animations:^{
         self.alpha = 1;
         backGroundBlurr.alpha = 1;
         contentView.center = self.center;
@@ -540,7 +539,7 @@ typedef void (^completion)(BOOL success);
 }
 
 -(void)dismiss {
-    [UIView animateWithDuration:0.15 animations:^{
+    [UIView animateWithDuration:0.02 animations:^{
         contentView.alpha = 0;
         backGroundBlurr.alpha = 0;
         self.alpha = 0;

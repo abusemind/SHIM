@@ -8,11 +8,13 @@
 
 #import "WelcomeScreenViewController.h"
 #import "ApplicationSmallCell.h"
-#import "MDMApplication.h"
 #import "PassengerAppHybridViewController.h"
 #import "SpringnyFlowLayout.h"
 
 #import <Cordova/CDVAvailability.h>
+
+//If you want to support landscape in iPhone for this welcome screen, set to NO
+#define USE_SPRINGNI_IN_IPHONE YES
 
 static NSString *const cellId = @"ApplicationSmallCell";
 
@@ -28,8 +30,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     int _bottomContentInsect;
 }
 
-@property (nonatomic, strong) NSMutableArray *applications;
-@property (strong, nonatomic) MDMApplication *passengerAppToOpen;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *morganstanley;
 @property (weak, nonatomic) IBOutlet UILabel *enterpriseAppStore;
@@ -68,6 +69,29 @@ static NSString *const cellId = @"ApplicationSmallCell";
     [self setupFakeData];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    
+    if(self.passengerAppToOpen != nil && self.bouncingImmediately)
+    {
+        [self launchPassengerApp];
+    }
+}
+
+- (NSUInteger) supportedInterfaceOrientations
+{
+    if(USE_SPRINGNI_IN_IPHONE){
+        //springny layout would break autolayout when rotation
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    else{
+        return UIInterfaceOrientationMaskAll;
+    }
+}
+
 #pragma mark - Setup
 - (void) setupCollectionView
 {
@@ -75,7 +99,8 @@ static NSString *const cellId = @"ApplicationSmallCell";
     self.collectionView.delegate = self;
     
     UICollectionViewFlowLayout* layout =
-        CDV_IsIPad()? [UICollectionViewFlowLayout new]: [SpringnyFlowLayout new];
+        CDV_IsIPad()? [UICollectionViewFlowLayout new]:
+                    USE_SPRINGNI_IN_IPHONE? [SpringnyFlowLayout new]: [UICollectionViewFlowLayout new];
     
     layout.minimumLineSpacing = 1.0;
     layout.minimumInteritemSpacing = 1.0;
@@ -91,6 +116,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     [self.collectionView registerNib:[UINib nibWithNibName:cellId bundle:nil] forCellWithReuseIdentifier:cellId];
 }
 
+//TODO: Delete using fake data!
 - (void) setupFakeData
 {
     NSArray *urls = @[@"www.sina.com", @"www.google.com", @"www.youku.com", @"www.sohu.com"];
@@ -102,7 +128,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
         MDMApplication *app = [MDMApplication new];
         app.name = [NSString stringWithFormat:@"App: %d", i];
         app.url = [urls objectAtIndex:(i%4)];
-        app.id = i;
+        app.appId = i;
         app.description =
         [NSString stringWithFormat:@"This is a very long description text for app: %d. This is the end. This is a very long description text for app. This is the end. This is a very long description text for app. This is the end.", i];
         [self.applications addObject:app];
@@ -120,7 +146,8 @@ static NSString *const cellId = @"ApplicationSmallCell";
                                 duration:(NSTimeInterval)duration
 {
     
-    if(CDV_IsIPad()){
+    if(CDV_IsIPad())
+    {
         int numberOfItemsInPage = floor(self.collectionView.bounds.size.height / _itemDefaultHeight) * _numberOfItemsPerRow;
         
         int currentPage = self.pageControl.currentPage;
@@ -147,6 +174,9 @@ static NSString *const cellId = @"ApplicationSmallCell";
              setContentOffset:CGPointMake(pageOffset * self.view.bounds.size.width, 0) animated:NO];
         });
     }
+    
+    //Important!
+    [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
 
@@ -174,6 +204,9 @@ static NSString *const cellId = @"ApplicationSmallCell";
         
         cell.appTitleLabel.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [UIColor clearColor];
+        //For debug:
+        //cell.layer.borderColor = [UIColor blackColor].CGColor;
+        //cell.layer.borderWidth = 1.0;
     }
 
     return cell;
@@ -195,17 +228,17 @@ static NSString *const cellId = @"ApplicationSmallCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MDMApplication *app = [self.applications objectAtIndex:indexPath.item];
-    if(app)
+    if(app && app.url != nil)
     {
         self.passengerAppToOpen = app;
         [self launchPassengerApp];
     }
-
 }
 
-#pragma mark - Scroll view delegate (Update PageControl's current page)
+#pragma mark - Scroll view delegate (To Update PageControl's current page)
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
-	if (!_pageControlBeingUsed && CDV_IsIPad()) {
+	if (!_pageControlBeingUsed && CDV_IsIPad())
+    {
 		CGFloat pageWidth = self.collectionView.frame.size.width;
         int page = ceil(self.collectionView.contentOffset.x / pageWidth);
 		self.pageControl.currentPage = page;
@@ -234,16 +267,23 @@ static NSString *const cellId = @"ApplicationSmallCell";
 #pragma mark - Passenger App
 - (void) launchPassengerApp
 {
-    [self performSegueWithIdentifier:SEGUE_LAUNCH_PASSENGER_APP sender:self];
+    if(self.passengerAppToOpen != nil)
+       [self performSegueWithIdentifier:SEGUE_LAUNCH_PASSENGER_APP sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //remove observers to notification center
+    //TODO: remove observers to notification center
     
     if([segue.identifier isEqualToString:SEGUE_LAUNCH_PASSENGER_APP]) {
+        //setup PassengerAppViewController
         PassengerAppHybridViewController *destination = segue.destinationViewController;
-        [destination setPassengerApp:self.passengerAppToOpen];
+        destination.passengerApp = self.passengerAppToOpen;
+        destination.allApps = self.applications;
+        
+        //clean
+        self.passengerAppToOpen = nil;
+        self.bouncingImmediately = NO;
     }
 }
 

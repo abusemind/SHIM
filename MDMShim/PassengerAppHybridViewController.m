@@ -7,7 +7,8 @@
 //
 
 #import "PassengerAppHybridViewController.h"
-#import "btSimplePopUP.h"
+#import "PopupView.h"
+#import "WelcomeScreenViewController.h"
 
 @interface PassengerAppHybridViewController () <UIScrollViewDelegate>
 {
@@ -18,6 +19,9 @@
     UIImage *_apps;
     UIImage *_logout;
 }
+
+@property (strong, nonatomic) MDMApplication *nextPassengerAppToOpen;
+
 @end
 
 @implementation PassengerAppHybridViewController
@@ -41,8 +45,15 @@
     _home = [[UIImage imageNamed:@"home.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     _apps = [[UIImage imageNamed:@"apps.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     _logout = [[UIImage imageNamed:@"logout.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    [self setupMenuButton];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setupMenuButton];
+    });
 }
 
 - (void)setPassengerApp:(MDMApplication *)passengerApp
@@ -73,29 +84,31 @@
     return shouldLoad;
 }
 
-#pragma mark - Menu
+#pragma mark - Menus
 - (void) setupMenuButton
 {
-    _menuBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_menuBtn addTarget:self action:@selector(hitMenuButtonOnWebView:)
                 forControlEvents:UIControlEventTouchUpInside];
     
-    [_menuBtn setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
+    [_menuBtn setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     
-    CGFloat size = CDV_IsIPad()? 36:28;
-    _menuBtn.frame = CGRectMake(10, self.view.bounds.size.height - size - 10, size, size);
-    _menuBtn.alpha = 0.75;
+    CGFloat size = CDV_IsIPad()? 48:40;
+    _menuBtn.frame = CGRectMake(self.view.bounds.size.width - size - 8, self.view.bounds.size.height - size - 8, size, size);
+    _menuBtn.alpha = 0.9;
+    _menuBtn.tintColor = MS_DARK_BLUE_100;
+    
     [self.view addSubview:_menuBtn];
 }
 
 -(void) hitMenuButtonOnWebView:(id) sender
 {
     BTPopUpItemView *home = [[BTPopUpItemView alloc] initWithImage:_home title:@"Home" action:^{
-        [self performSegueWithIdentifier:@"welcomeScreen" sender:self];
+        [self showWelcomeScreen];
     }];
     
     BTPopUpItemView *apps = [[BTPopUpItemView alloc] initWithImage:_apps title:@"Other Apps" action:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.025 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self showOtherApps];
         });
     }];
@@ -104,28 +117,61 @@
         [self logout];
     }];
     
-    NSArray *items = [NSArray arrayWithObjects:home, apps, logout,apps,apps,apps,apps,apps,apps,apps,apps,apps,apps,apps,apps,apps, nil];
-    btSimplePopUP *mainMenu = [[btSimplePopUP alloc] initWithItems:items addToViewController:self];
+    NSArray *items = [NSArray arrayWithObjects:home, apps, logout, nil];
+    PopupView *mainMenu = [[PopupView alloc] initWithItems:items addToViewController:self];
     [self.view addSubview:mainMenu];
     [mainMenu show];
 }
 
-- (void) showMainMenu
+- (void) showWelcomeScreen
 {
+    WelcomeScreenViewController * welcomeScreen =
+        (WelcomeScreenViewController *) self.presentingViewController;
     
+    welcomeScreen.passengerAppToOpen = nil;
+    welcomeScreen.bouncingImmediately= NO;
     
-    
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) showOtherApps
 {
-    NSLog(@"Show Other apps");
+    if(self.allApps == nil || [self.allApps count] == 0){
+        DLog(@"No other applications to show");
+        return;
+    }
+    
+    NSMutableArray *menuItems = [NSMutableArray new];
+    for(MDMApplication *app in self.allApps){
+        
+        if(self.passengerApp.appId == app.appId)
+        {
+            continue;
+        }
+        
+        BTPopUpItemView *menuItem = [[BTPopUpItemView alloc] initWithImage:[UIImage imageNamed:@"application.png"] title:app.name action:^{
+            
+            WelcomeScreenViewController * welcomeScreen =
+                (WelcomeScreenViewController *) self.presentingViewController;
+            
+            welcomeScreen.passengerAppToOpen = app;
+            welcomeScreen.bouncingImmediately= YES;
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }];
+        
+        [menuItems addObject:menuItem];
+    }
+    
+    PopupView *mainMenu = [[PopupView alloc] initWithItems:menuItems addToViewController:self];
+    [self.view addSubview:mainMenu];
+    [mainMenu show];
 }
 
 - (void) logout
 {
-    NSLog(@"Logout");
+    DLog(@"Logout");
 }
 
 #pragma mark - rotate
@@ -139,8 +185,8 @@
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     
     CGRect rect = _menuBtn.frame;
-    rect.origin.x = 10;
-    rect.origin.y = self.view.bounds.size.height - rect.size.height - 10;
+    rect.origin.x = self.view.bounds.size.width  - rect.size.width  - 8;
+    rect.origin.y = self.view.bounds.size.height - rect.size.height - 8;
     _menuBtn.frame = rect;
     
     _menuBtn.userInteractionEnabled = YES;

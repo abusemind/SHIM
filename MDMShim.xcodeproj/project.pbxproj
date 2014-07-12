@@ -15,7 +15,7 @@
 		FF72403819704E96002A8A1C /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = FF72403719704E96002A8A1C /* config.xml */; };
 		FF7240611970F8BA002A8A1C /* SpringnyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7240601970F8BA002A8A1C /* SpringnyFlowLayout.m */; };
 		FF72406C1971079F002A8A1C /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = FF72406A1971079F002A8A1C /* menu.png */; };
-		FF72407019711E61002A8A1C /* btSimplePopUP.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72406F19711E61002A8A1C /* btSimplePopUP.m */; };
+		FF72407019711E61002A8A1C /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72406F19711E61002A8A1C /* PopupView.m */; };
 		FF724074197124C4002A8A1C /* apps.png in Resources */ = {isa = PBXBuildFile; fileRef = FF724071197124C4002A8A1C /* apps.png */; };
 		FF724075197124C4002A8A1C /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = FF724072197124C4002A8A1C /* home.png */; };
 		FF724076197124C4002A8A1C /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = FF724073197124C4002A8A1C /* logout.png */; };
@@ -94,11 +94,12 @@
 		FF72405F1970F8BA002A8A1C /* SpringnyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringnyFlowLayout.h; sourceTree = "<group>"; };
 		FF7240601970F8BA002A8A1C /* SpringnyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringnyFlowLayout.m; sourceTree = "<group>"; };
 		FF72406A1971079F002A8A1C /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
-		FF72406E19711E61002A8A1C /* btSimplePopUP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btSimplePopUP.h; sourceTree = "<group>"; };
-		FF72406F19711E61002A8A1C /* btSimplePopUP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = btSimplePopUP.m; sourceTree = "<group>"; };
+		FF72406E19711E61002A8A1C /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupView.h; sourceTree = "<group>"; };
+		FF72406F19711E61002A8A1C /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupView.m; sourceTree = "<group>"; };
 		FF724071197124C4002A8A1C /* apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apps.png; sourceTree = "<group>"; };
 		FF724072197124C4002A8A1C /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		FF724073197124C4002A8A1C /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
+		FF72407719716214002A8A1C /* MSDesignColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSDesignColors.h; sourceTree = "<group>"; };
 		FF7E29D4196FB25300591971 /* ACError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACError.h; sourceTree = "<group>"; };
 		FF7E29D5196FB25300591971 /* ACFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACFileHandle.h; sourceTree = "<group>"; };
 		FF7E29D6196FB25300591971 /* ACSecureFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSecureFile.h; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 			children = (
 				FF72403419704C5A002A8A1C /* SegueIdentifiers.h */,
 				FF72403519704D0A002A8A1C /* Constants.h */,
+				FF72407719716214002A8A1C /* MSDesignColors.h */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -257,10 +259,25 @@
 		FF72406D19711E1D002A8A1C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				FF72406E19711E61002A8A1C /* btSimplePopUP.h */,
-				FF72406F19711E61002A8A1C /* btSimplePopUP.m */,
+				FF72406E19711E61002A8A1C /* PopupView.h */,
+				FF72406F19711E61002A8A1C /* PopupView.m */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		FF7240801971743B002A8A1C /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				FF72408A19717448002A8A1C /* App Cache */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		FF72408A19717448002A8A1C /* App Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "App Cache";
 			sourceTree = "<group>";
 		};
 		FF7E29D2196FB25300591971 /* Lib */ = {
@@ -489,6 +506,7 @@
 				FFB301C6196F8344001FE814 /* AppDelegate.m */,
 				FFB301C8196F8344001FE814 /* Main_iPhone.storyboard */,
 				FFB301CB196F8344001FE814 /* Main_iPad.storyboard */,
+				FF7240801971743B002A8A1C /* Infrastructure */,
 				FF7E2A38196FC81A00591971 /* Models */,
 				FF7E2A2E196FC24A00591971 /* View Controllers */,
 				FF7E2A2D196FC0E300591971 /* Views */,
@@ -671,7 +689,7 @@
 				FF72403219704A19002A8A1C /* PassengerAppHybridViewController.m in Sources */,
 				FF7E2A10196FB25300591971 /* JSONModelClassProperty.m in Sources */,
 				FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */,
-				FF72407019711E61002A8A1C /* btSimplePopUP.m in Sources */,
+				FF72407019711E61002A8A1C /* PopupView.m in Sources */,
 				FFB301D0196F8344001FE814 /* LoadingViewController.m in Sources */,
 				FF7240611970F8BA002A8A1C /* SpringnyFlowLayout.m in Sources */,
 				FF7E2A16196FB25300591971 /* JSONKeyMapper.m in Sources */,

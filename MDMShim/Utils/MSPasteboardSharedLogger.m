@@ -36,7 +36,6 @@ static NSString *const sharedID = @"mobile-dev-mdmshim";
     const char *filePath = [self filePath];
     file = fopen(filePath, "a");
     
-    //redirect NSLog
     dup2(fileno(file), STDERR_FILENO);
 }
 
