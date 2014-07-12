@@ -104,7 +104,7 @@
         [self logout];
     }];
     
-    NSArray *items = [NSArray arrayWithObjects:home, apps, logout, nil];
+    NSArray *items = [NSArray arrayWithObjects:home, apps, logout,apps,apps,apps,apps,apps,apps,apps,apps,apps,apps,apps,apps,apps, nil];
     btSimplePopUP *mainMenu = [[btSimplePopUP alloc] initWithItems:items addToViewController:self];
     [self.view addSubview:mainMenu];
     [mainMenu show];

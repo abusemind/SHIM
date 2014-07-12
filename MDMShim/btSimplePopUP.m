@@ -4,8 +4,8 @@
 typedef void (^completion)(BOOL success);
 
 #define SCREEN_SIZE [UIScreen mainScreen].bounds
-#define POPUP_WIDTH (CDV_IsIPad() ? 500: 300.0)
-#define POP_HEIGHT  (CDV_IsIPad() ? 550: 295.0)
+#define POPUP_WIDTH (CDV_IsIPad() ? 380: 300.0)
+#define POP_HEIGHT  (CDV_IsIPad() ? 400: 295.0)
 
 #pragma mark - Blur image categories
 @interface UIView (bt_screenshot)
@@ -403,7 +403,7 @@ typedef void (^completion)(BOOL success);
 
 -(void)setUpPopItems {
     
-    itemSize = CDV_IsIPad()? CGSizeMake(120.0f, 120.0f): CGSizeMake(50.0f, 50.0f);
+    itemSize = CDV_IsIPad()? CGSizeMake(80.0f, 80.0f): CGSizeMake(50.0f, 50.0f);
     itemTextColor = [UIColor whiteColor];
     itemFont = [UIFont boldSystemFontOfSize:14.f];
     highlightColor = [UIColor colorWithRed:.02f green:.549f blue:.961f alpha:1.f];
@@ -427,7 +427,7 @@ typedef void (^completion)(BOOL success);
     int counter = 0;
     for(int i =0; i< pages; i++){
         if(i > 0){
-            pageFactor = 300*i;
+            pageFactor = POPUP_WIDTH*i;
             count = 0;
             yAxis = 40.0;
             xAxis = pageFactor +xFactor;
