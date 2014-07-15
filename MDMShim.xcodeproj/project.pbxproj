@@ -91,6 +91,14 @@
 		FFB301E5196F8345001FE814 /* MDMShimTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB301E4196F8345001FE814 /* MDMShimTests.m */; };
 		FFB30243196F84F9001FE814 /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB301F3196F8395001FE814 /* libCordova.a */; };
 		FFB30249196F8613001FE814 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB30248196F8613001FE814 /* libz.dylib */; };
+		FFE68C361975892100E7544D /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE68C271975892100E7544D /* CDVLogger.m */; };
+		FFE68C371975892100E7544D /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE68C2A1975892100E7544D /* CDVNotification.m */; };
+		FFE68C381975892100E7544D /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE68C2D1975892100E7544D /* CDVLocation.m */; };
+		FFE68C391975892100E7544D /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE68C301975892100E7544D /* CDVConnection.m */; };
+		FFE68C3A1975892100E7544D /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE68C321975892100E7544D /* CDVReachability.m */; };
+		FFE68C3B1975892100E7544D /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE68C351975892100E7544D /* CDVVibration.m */; };
+		FFE68C44197589AD00E7544D /* MatrixPortal.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE68C40197589AD00E7544D /* MatrixPortal.m */; };
+		FFE68C45197589AD00E7544D /* MatrixPortalApplicationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE68C43197589AD00E7544D /* MatrixPortalApplicationCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,6 +271,22 @@
 		FFB301E4196F8345001FE814 /* MDMShimTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDMShimTests.m; sourceTree = "<group>"; };
 		FFB301EE196F8395001FE814 /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = MDMShim/CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		FFB30248196F8613001FE814 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		FFE68C261975892100E7544D /* CDVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLogger.h; sourceTree = "<group>"; };
+		FFE68C271975892100E7544D /* CDVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLogger.m; sourceTree = "<group>"; };
+		FFE68C291975892100E7544D /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVNotification.h; sourceTree = "<group>"; };
+		FFE68C2A1975892100E7544D /* CDVNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVNotification.m; sourceTree = "<group>"; };
+		FFE68C2C1975892100E7544D /* CDVLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLocation.h; sourceTree = "<group>"; };
+		FFE68C2D1975892100E7544D /* CDVLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLocation.m; sourceTree = "<group>"; };
+		FFE68C2F1975892100E7544D /* CDVConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVConnection.h; sourceTree = "<group>"; };
+		FFE68C301975892100E7544D /* CDVConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVConnection.m; sourceTree = "<group>"; };
+		FFE68C311975892100E7544D /* CDVReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVReachability.h; sourceTree = "<group>"; };
+		FFE68C321975892100E7544D /* CDVReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVReachability.m; sourceTree = "<group>"; };
+		FFE68C341975892100E7544D /* CDVVibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVVibration.h; sourceTree = "<group>"; };
+		FFE68C351975892100E7544D /* CDVVibration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVVibration.m; sourceTree = "<group>"; };
+		FFE68C3F197589AD00E7544D /* MatrixPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixPortal.h; sourceTree = "<group>"; };
+		FFE68C40197589AD00E7544D /* MatrixPortal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixPortal.m; sourceTree = "<group>"; };
+		FFE68C42197589AD00E7544D /* MatrixPortalApplicationCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixPortalApplicationCache.h; sourceTree = "<group>"; };
+		FFE68C43197589AD00E7544D /* MatrixPortalApplicationCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixPortalApplicationCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +361,8 @@
 		80A3FB5A1975253D00EF5684 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				FFE68C3D197589AD00E7544D /* Matrix */,
+				FFE68C241975892100E7544D /* Cordova */,
 				80A3FB5B1975253D00EF5684 /* MDMShim */,
 			);
 			name = Plugins;
@@ -744,6 +770,92 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FFE68C241975892100E7544D /* Cordova */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C251975892100E7544D /* org.apache.cordova.console */,
+				FFE68C281975892100E7544D /* org.apache.cordova.dialogs */,
+				FFE68C2B1975892100E7544D /* org.apache.cordova.geolocation */,
+				FFE68C2E1975892100E7544D /* org.apache.cordova.network-information */,
+				FFE68C331975892100E7544D /* org.apache.cordova.vibration */,
+			);
+			path = Cordova;
+			sourceTree = "<group>";
+		};
+		FFE68C251975892100E7544D /* org.apache.cordova.console */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C261975892100E7544D /* CDVLogger.h */,
+				FFE68C271975892100E7544D /* CDVLogger.m */,
+			);
+			path = org.apache.cordova.console;
+			sourceTree = "<group>";
+		};
+		FFE68C281975892100E7544D /* org.apache.cordova.dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C291975892100E7544D /* CDVNotification.h */,
+				FFE68C2A1975892100E7544D /* CDVNotification.m */,
+			);
+			path = org.apache.cordova.dialogs;
+			sourceTree = "<group>";
+		};
+		FFE68C2B1975892100E7544D /* org.apache.cordova.geolocation */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C2C1975892100E7544D /* CDVLocation.h */,
+				FFE68C2D1975892100E7544D /* CDVLocation.m */,
+			);
+			path = org.apache.cordova.geolocation;
+			sourceTree = "<group>";
+		};
+		FFE68C2E1975892100E7544D /* org.apache.cordova.network-information */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C2F1975892100E7544D /* CDVConnection.h */,
+				FFE68C301975892100E7544D /* CDVConnection.m */,
+				FFE68C311975892100E7544D /* CDVReachability.h */,
+				FFE68C321975892100E7544D /* CDVReachability.m */,
+			);
+			path = "org.apache.cordova.network-information";
+			sourceTree = "<group>";
+		};
+		FFE68C331975892100E7544D /* org.apache.cordova.vibration */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C341975892100E7544D /* CDVVibration.h */,
+				FFE68C351975892100E7544D /* CDVVibration.m */,
+			);
+			path = org.apache.cordova.vibration;
+			sourceTree = "<group>";
+		};
+		FFE68C3D197589AD00E7544D /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C3E197589AD00E7544D /* MatrixPortal */,
+				FFE68C41197589AD00E7544D /* MatrixPortalApplicationCache */,
+			);
+			path = Matrix;
+			sourceTree = "<group>";
+		};
+		FFE68C3E197589AD00E7544D /* MatrixPortal */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C3F197589AD00E7544D /* MatrixPortal.h */,
+				FFE68C40197589AD00E7544D /* MatrixPortal.m */,
+			);
+			path = MatrixPortal;
+			sourceTree = "<group>";
+		};
+		FFE68C41197589AD00E7544D /* MatrixPortalApplicationCache */ = {
+			isa = PBXGroup;
+			children = (
+				FFE68C42197589AD00E7544D /* MatrixPortalApplicationCache.h */,
+				FFE68C43197589AD00E7544D /* MatrixPortalApplicationCache.m */,
+			);
+			path = MatrixPortalApplicationCache;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -887,9 +999,12 @@
 				FF7E2A34196FC58600591971 /* WelcomeScreenViewController.m in Sources */,
 				80A3FB4A1975247900EF5684 /* ALAlertBannerManager.m in Sources */,
 				FF7E2A1B196FB25300591971 /* zip.c in Sources */,
+				FFE68C381975892100E7544D /* CDVLocation.m in Sources */,
 				FF7E2A1C196FB25300591971 /* SSZipArchive.m in Sources */,
+				FFE68C3A1975892100E7544D /* CDVReachability.m in Sources */,
 				FF7E2A26196FB56500591971 /* MSPasteboardSharedLogger.m in Sources */,
 				FF7240AF197195C8002A8A1C /* SDImageCache.m in Sources */,
+				FFE68C371975892100E7544D /* CDVNotification.m in Sources */,
 				FF72403219704A19002A8A1C /* PassengerAppHybridViewController.m in Sources */,
 				FF7240B0197195C8002A8A1C /* SDWebImageCompat.m in Sources */,
 				FF7E2A10196FB25300591971 /* JSONModelClassProperty.m in Sources */,
@@ -898,6 +1013,8 @@
 				FF7240B3197195C8002A8A1C /* SDWebImageDownloaderOperation.m in Sources */,
 				FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */,
 				FF7240B2197195C8002A8A1C /* SDWebImageDownloader.m in Sources */,
+				FFE68C361975892100E7544D /* CDVLogger.m in Sources */,
+				FFE68C391975892100E7544D /* CDVConnection.m in Sources */,
 				FF7240AE197195C8002A8A1C /* NSData+ImageContentType.m in Sources */,
 				FF72407019711E61002A8A1C /* PopupView.m in Sources */,
 				FFB301D0196F8344001FE814 /* LoadingViewController.m in Sources */,
@@ -912,6 +1029,8 @@
 				FF7E2A3B196FC83D00591971 /* MDMApplication.m in Sources */,
 				FFB301C7196F8344001FE814 /* AppDelegate.m in Sources */,
 				FF7E2A0F196FB25300591971 /* JSONModelArray.m in Sources */,
+				FFE68C3B1975892100E7544D /* CDVVibration.m in Sources */,
+				FFE68C45197589AD00E7544D /* MatrixPortalApplicationCache.m in Sources */,
 				FF7240AD197195C8002A8A1C /* MKAnnotationView+WebCache.m in Sources */,
 				80A3FB59197524AC00EF5684 /* SVProgressHUD.m in Sources */,
 				FF7E2A15196FB25300591971 /* JSONModel+networking.m in Sources */,
@@ -925,6 +1044,7 @@
 				FF7E2A13196FB25300591971 /* JSONAPI.m in Sources */,
 				FF7E2A17196FB25300591971 /* JSONValueTransformer.m in Sources */,
 				FF7E2A14196FB25300591971 /* JSONHTTPClient.m in Sources */,
+				FFE68C44197589AD00E7544D /* MatrixPortal.m in Sources */,
 				FF7E2A0E196FB25300591971 /* JSONModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

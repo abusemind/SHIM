@@ -43,7 +43,7 @@
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="OpenAllWhitelistURLsInWebView" value="true" />
     <preference name="BackupWebStorage" value="none" />
-
+    
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
     </feature>
@@ -56,19 +56,13 @@
     <feature name="Notification">
         <param name="ios-package" value="CDVNotification" />
     </feature>
-    
-    <!-- notifications for background downloader -->
-    <feature name="ShimNotificationCenter">
-        <param name="ios-package" value="ShimNotificationCenter"/>
-        <param name="onload" value="true" />
-    </feature>
-<!--
     <feature name="MatrixPortal">
         <param name="ios-package" value="MatrixPortal"/>
     </feature>
     <feature name="MatrixPortalApplicationCache">
         <param name="ios-package" value="MatrixPortalApplicationCache"/>
     </feature>
+    <!--
     <feature name="MatrixCrypto">
         <param name="ios-package" value="MatrixCrypto"/>
     </feature>
@@ -90,5 +84,5 @@
     <feature name="EmailComposer">
         <param name="ios-package" value="EmailComposer"/>
     </feature>
--->
+    -->
 </widget>
