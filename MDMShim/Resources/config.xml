@@ -56,6 +56,12 @@
     <feature name="Notification">
         <param name="ios-package" value="CDVNotification" />
     </feature>
+    
+    <!-- notifications for background downloader -->
+    <feature name="ShimNotificationCenter">
+        <param name="ios-package" value="ShimNotificationCenter"/>
+        <param name="onload" value="true" />
+    </feature>
 <!--
     <feature name="MatrixPortal">
         <param name="ios-package" value="MatrixPortal"/>

@@ -9,6 +9,7 @@
 #import "PassengerAppHybridViewController.h"
 #import "PopupView.h"
 #import "WelcomeScreenViewController.h"
+#import "ALAlertBanner.h"
 
 @interface PassengerAppHybridViewController () <UIScrollViewDelegate>
 {
@@ -45,6 +46,21 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setupMenuButton];
     });
+    
+    
+    
+    ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.webView
+                                                        style:ALAlertBannerStyleNotify
+                                                     position:ALAlertBannerPositionBottom
+                                                        title:@"Loading"
+                                                     subtitle:_passengerApp.url
+                                                  tappedBlock:^(ALAlertBanner *alertBanner) {
+                                                      [alertBanner hide];
+                                                  }];
+    banner.secondsToShow = 2.75f;
+    banner.showAnimationDuration = 0.25f;
+    banner.hideAnimationDuration = 0.2f;
+    [banner show];
 }
 
 - (void)createGapView
