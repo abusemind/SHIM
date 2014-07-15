@@ -43,8 +43,8 @@ double borderWidth = 1.6;
 }
 
 - (void)sharedSetup {
-    _centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width/3.1
-                                                           , self.bounds.size.height/3.1)];
+    _centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width/3.3
+                                                           , self.bounds.size.height/3.3)];
     _centerView.backgroundColor = self.tintColor;
     [self addSubview:_centerView];
     _centerView.center = CGPointMake( self.bounds.size.width / 2, self.bounds.size.height / 2);
