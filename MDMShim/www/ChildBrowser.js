@@ -17,9 +17,13 @@
 	};
 	
 	ChildBrowser.prototype = {
-		showWebPage: function(loc) {
+		showWebPage: function(loc, name) {
 			loc = ChildBrowser.normaliseUrl(loc);
-			cordovaRef.exec(null, null, 'ChildBrowser', 'showWebPage', [loc]);
+            if(name) {
+                cordovaRef.exec(null, null, 'ChildBrowser', 'showWebPage', [loc, name]);
+            } else {
+                cordovaRef.exec(null, null, 'ChildBrowser', 'showWebPage', [loc]);
+            }
 		},
 		close: function() {
 			cordovaRef.exec(null, null, 'ChildBrowser', 'close', []);

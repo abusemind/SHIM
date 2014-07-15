@@ -12,3 +12,8 @@ this.ShimAurora.load=function(resources){
 };
 // always add cordova
 document.write('<script src="/matrix/portal/docs/mobile/js/lib/cordova/ios/cordova.js"></script>');
+/*document.write('if (navigator.userAgent === undefined) {
+    navigator.__defineGetter__("userAgent", function() {
+                               return("Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit");
+                               });
+}');*/

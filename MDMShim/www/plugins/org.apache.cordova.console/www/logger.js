@@ -1,4 +1,4 @@
-cordova.define("org.apache.cordova.console.logger", function(require, exports, module) {/*
+cordova.define("org.apache.cordova.console.logger", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -209,7 +209,11 @@ function formatStringForMessage(message) {
 logger.logLevel = function(level /* , ... */) {
     // format the message with the parameters
     var formatArgs = [].slice.call(arguments, 1);
-    formatArgs.unshift(formatStringForMessage(formatArgs[0])); // add formatString
+    var fmtString = formatStringForMessage(formatArgs[0]);
+    if (fmtString.length > 0){
+        formatArgs.unshift(fmtString); // add formatString
+    }
+
     var message    = logger.format.apply(logger.format, formatArgs);
 
     if (LevelsMap[level] === null) {
@@ -349,4 +353,5 @@ logger.__onDeviceReady = function() {
 
 // add a deviceready event to log queued messages
 document.addEventListener("deviceready", logger.__onDeviceReady, false);
+
 });

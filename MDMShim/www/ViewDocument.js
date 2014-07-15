@@ -17,11 +17,15 @@
 	};
 	
 	ViewDocument.prototype = {
-		loadDocument: function(loc, success, failure) {
-			cordovaRef.exec(success, failure, 'ViewDocument', 'loadDocument', [ViewDocument.normaliseUrl(loc)]);
+		loadDocument: function(loc, success, failure, name) {
+            if(name) {
+                cordovaRef.exec(success, failure, 'ChildBrowser', 'showWebPage', [ViewDocument.normaliseUrl(loc), name]);
+            } else {
+                cordovaRef.exec(success, failure, 'ChildBrowser', 'showWebPage', [ViewDocument.normaliseUrl(loc)]);
+            }
 		},
 		close: function() {
-			cordovaRef.exec(null, null, 'ViewDocument', 'close', []);
+			cordovaRef.exec(null, null, 'ChildBrowser', 'close', []);
 		}
 	};
 	

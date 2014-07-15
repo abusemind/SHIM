@@ -18,22 +18,20 @@
 	
 	MatrixPortalApplicationCache.prototype = {
 		setManifest: function(url, zipped) {
-			MatrixPortalApplicationCache.cacheManifestUrl = MatrixPortalApplicationCache.normaliseUrl(url);
-			MatrixPortalApplicationCache.zipped = !!zipped;
 		},
 		update: function() {
-			cordovaRef.exec(null, null, 'MatrixPortalApplicationCache', 'downloadCacheManifest', [MatrixPortalApplicationCache.cacheManifestUrl, MatrixPortalApplicationCache.zipped]);
+            console.log('matrixPortalApplicationCache.update is deprecated - please remove usage');
+            if(matrixPortalApplicationCache.onnoupdate) {
+                matrixPortalApplicationCache.onnoupdate();
+            }
 		},
 		incrementalUpdate: function(url, referer) {
-            url = MatrixPortalApplicationCache.normaliseUrl(url);
-            if(referer) {
-                MatrixPortalApplicationCache.referer = referer = MatrixPortalApplicationCache.normaliseUrl(referer);
-                cordovaRef.exec(null, null, 'MatrixPortalApplicationCache', 'incrementalUpdate', [url, referer]);
-            } else {
-                cordovaRef.exec(null, null, 'MatrixPortalApplicationCache', 'incrementalUpdate', [url]);
+            if(matrixPortalApplicationCache.onnoupdate) {
+                matrixPortalApplicationCache.onnoupdate();
             }
 		},
 		swapCache: function() {
+            console.log('matrixPortalApplicationCache.swapCache is deprecated - please remove usage');
             var referer = MatrixPortalApplicationCache.referer;
             if(referer) {
                 cordovaRef.exec(null, null, 'MatrixPortalApplicationCache', 'swapCacheManifest', [referer]);
@@ -51,12 +49,10 @@
 			cordovaRef.exec(callback, null, 'MatrixPortalApplicationCache', 'hasUrlOnDisk', [url]);
 		},
         getCachedVersionForReferer: function(url, callback) {
-            url = MatrixPortalApplicationCache.normaliseUrl(url);
-            cordovaRef.exec(callback, null, 'MatrixPortalApplicationCache', 'getCachedVersionForReferer', [url]);
+            console.log('matrixPortalApplicationCache.getCachedVersionForReferer is deprecated - please remove usage');
         },
         setIntegrityHashForReferer: function(referer, hashes, callback) {
-            referer = MatrixPortalApplicationCache.normaliseUrl(referer);
-            cordovaRef.exec(callback, null, 'MatrixPortalApplicationCache', 'setIntegrityHashForReferer', [referer, hashes]);
+            console.log('matrixPortalApplicationCache.setIntegrityHashForReferer is deprecated - please remove usage');
         }
 	};
 	
