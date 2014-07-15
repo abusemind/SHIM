@@ -48,6 +48,7 @@
 		FF7240B9197195C8002A8A1C /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7240A8197195C8002A8A1C /* UIImage+WebP.m */; };
 		FF7240BA197195C8002A8A1C /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7240AA197195C8002A8A1C /* UIImageView+HighlightedWebCache.m */; };
 		FF7240BB197195C8002A8A1C /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7240AC197195C8002A8A1C /* UIImageView+WebCache.m */; };
+		FF7240C1197552AC002A8A1C /* Splashes in Resources */ = {isa = PBXBuildFile; fileRef = FF7240C0197552AC002A8A1C /* Splashes */; };
 		FF7E2A0B196FB25300591971 /* libAppConnectLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7E29D8196FB25300591971 /* libAppConnectLibrary.a */; };
 		FF7E2A0C196FB25300591971 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7E29D9196FB25300591971 /* libcrypto.a */; };
 		FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7E29E5196FB25300591971 /* JSONModel+CoreData.m */; };
@@ -138,7 +139,7 @@
 		FF72403119704A19002A8A1C /* PassengerAppHybridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerAppHybridViewController.m; sourceTree = "<group>"; };
 		FF72403419704C5A002A8A1C /* SegueIdentifiers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueIdentifiers.h; sourceTree = "<group>"; };
 		FF72403519704D0A002A8A1C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		FF72403719704E96002A8A1C /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		FF72403719704E96002A8A1C /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = MDMShim/Resources/config.xml; sourceTree = "<group>"; };
 		FF72405F1970F8BA002A8A1C /* SpringnyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringnyFlowLayout.h; sourceTree = "<group>"; };
 		FF7240601970F8BA002A8A1C /* SpringnyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringnyFlowLayout.m; sourceTree = "<group>"; };
 		FF72406A1971079F002A8A1C /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
@@ -179,6 +180,7 @@
 		FF7240AA197195C8002A8A1C /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
 		FF7240AB197195C8002A8A1C /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		FF7240AC197195C8002A8A1C /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		FF7240C0197552AC002A8A1C /* Splashes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Splashes; sourceTree = "<group>"; };
 		FF7E29D4196FB25300591971 /* ACError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACError.h; sourceTree = "<group>"; };
 		FF7E29D5196FB25300591971 /* ACFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACFileHandle.h; sourceTree = "<group>"; };
 		FF7E29D6196FB25300591971 /* ACSecureFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSecureFile.h; sourceTree = "<group>"; };
@@ -393,7 +395,7 @@
 		FF72403619704E96002A8A1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FF72403719704E96002A8A1C /* config.xml */,
+				FF7240C0197552AC002A8A1C /* Splashes */,
 			);
 			name = Resources;
 			path = MDMShim/Resources;
@@ -649,6 +651,8 @@
 		FFB301AA196F8344001FE814 = {
 			isa = PBXGroup;
 			children = (
+				FF72403719704E96002A8A1C /* config.xml */,
+				80A3FC6D1975295A00EF5684 /* www */,
 				FFB301EE196F8395001FE814 /* CordovaLib.xcodeproj */,
 				FF7E29D2196FB25300591971 /* Lib */,
 				FFB301BC196F8344001FE814 /* MDMShim */,
@@ -657,7 +661,6 @@
 				FFB301B5196F8344001FE814 /* Frameworks */,
 				FFB301B4196F8344001FE814 /* Products */,
 				FF72403619704E96002A8A1C /* Resources */,
-				80A3FC6D1975295A00EF5684 /* www */,
 			);
 			sourceTree = "<group>";
 		};
@@ -847,6 +850,7 @@
 				FF7E2A44196FE46700591971 /* application.png in Resources */,
 				FF724075197124C4002A8A1C /* home.png in Resources */,
 				FF724076197124C4002A8A1C /* logout.png in Resources */,
+				FF7240C1197552AC002A8A1C /* Splashes in Resources */,
 				80A3FB4B1975247900EF5684 /* bannerAlert.png in Resources */,
 				FFB301CA196F8344001FE814 /* Main_iPhone.storyboard in Resources */,
 				80A3FB4D1975247900EF5684 /* bannerFailure.png in Resources */,
@@ -1068,6 +1072,7 @@
 					"$(PROJECT_DIR)/MDMShim/Lib/AppConnect",
 					"$(PROJECT_DIR)/Lib/AppConnect",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "A51AC6DC-03D3-4618-B74C-D1CC246FE340";
 				VALID_ARCHS = armv7;
@@ -1090,6 +1095,7 @@
 					"$(PROJECT_DIR)/MDMShim/Lib/AppConnect",
 					"$(PROJECT_DIR)/Lib/AppConnect",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "A51AC6DC-03D3-4618-B74C-D1CC246FE340";
 				VALID_ARCHS = armv7;
