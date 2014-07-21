@@ -37,30 +37,10 @@
     _home = [[UIImage imageNamed:@"home.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     _apps = [[UIImage imageNamed:@"apps.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     _logout = [[UIImage imageNamed:@"logout.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setupMenuButton];
     });
-    
-    
-    
-    ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.webView
-                                                        style:ALAlertBannerStyleNotify
-                                                     position:ALAlertBannerPositionBottom
-                                                        title:@"Loading"
-                                                     subtitle:_passengerApp.url
-                                                  tappedBlock:^(ALAlertBanner *alertBanner) {
-                                                      [alertBanner hide];
-                                                  }];
-    banner.secondsToShow = 2.75f;
-    banner.showAnimationDuration = 0.25f;
-    banner.hideAnimationDuration = 0.2f;
-    [banner show];
 }
 
 - (void)createGapView
@@ -81,9 +61,6 @@
     else{
         self.startPage = passengerApp.url;
     }
-    
-    
-    
     self.wwwFolderName = @"";
 }
 
@@ -103,21 +80,39 @@
 #pragma mark - Menu & Menu's actions
 - (void) setupMenuButton
 {
-    _menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_menuBtn addTarget:self action:@selector(hitMenuButtonOnWebView:)
-                forControlEvents:UIControlEventTouchUpInside];
-    
-    [_menuBtn setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    
-    CGFloat size = CDV_IsIPad()? 52:44;
-    _menuBtn.frame = CGRectMake(self.view.bounds.size.width - size - 8, self.view.bounds.size.height - size - 8, size, size);
-    _menuBtn.alpha = 0.95;
-    _menuBtn.tintColor = MS_DARK_BLUE_100;
-    
-    _menuBtn.layer.cornerRadius = 7;
-    _menuBtn.layer.masksToBounds = YES;
-    
-    [self.view addSubview:_menuBtn];
+    if(_menuBtn == nil)
+    {
+        _menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_menuBtn addTarget:self action:@selector(hitMenuButtonOnWebView:)
+           forControlEvents:UIControlEventTouchUpInside];
+        
+        [_menuBtn setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
+        
+        CGFloat size = CDV_IsIPad()? 52:44;
+        _menuBtn.frame = CGRectMake(self.view.bounds.size.width - size - 8, self.view.bounds.size.height - size - 8, size, size);
+        _menuBtn.alpha = 0.95;
+        _menuBtn.tintColor = MS_DARK_BLUE_100;
+        
+        _menuBtn.layer.cornerRadius = 7;
+        _menuBtn.layer.masksToBounds = YES;
+        
+        [self.view addSubview:_menuBtn];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.webView
+                                                                style:ALAlertBannerStyleNotify
+                                                             position:ALAlertBannerPositionBottom
+                                                                title:@"Loading"
+                                                             subtitle:_passengerApp.url
+                                                          tappedBlock:^(ALAlertBanner *alertBanner) {
+                                                              [alertBanner hide];
+                                                          }];
+            banner.secondsToShow = 2.75f;
+            banner.showAnimationDuration = 0.25f;
+            banner.hideAnimationDuration = 0.2f;
+            [banner show];
+        });
+    }
 }
 
 -(void) hitMenuButtonOnWebView:(id) sender
@@ -148,7 +143,7 @@
     welcomeScreen.passengerAppToOpen = nil;
     welcomeScreen.bouncingImmediately= NO;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:SEGUE_WELCOME_SCREEN sender:self];
 }
 
 - (void) showOtherApps
@@ -176,7 +171,7 @@
             welcomeScreen.passengerAppToOpen = app;
             welcomeScreen.bouncingImmediately= YES;
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self performSegueWithIdentifier:SEGUE_WELCOME_SCREEN sender:self];
         }];
         
         [menuItems addObject:menuItem];

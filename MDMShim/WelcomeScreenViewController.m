@@ -10,6 +10,8 @@
 #import "ApplicationSmallCell.h"
 #import "PassengerAppHybridViewController.h"
 #import "SpringnyFlowLayout.h"
+#import "CustomSegue.h"
+#import "CustomUnwindSegue.h"
 
 #import <Cordova/CDVAvailability.h>
 
@@ -29,6 +31,8 @@ static NSString *const cellId = @"ApplicationSmallCell";
     
     int _topContentInsect;
     int _bottomContentInsect;
+    
+    CGPoint _originatingPoint;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *morganstanley;
@@ -52,6 +56,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     _itemDefaultHeight   = CDV_IsIPad()? 150: 115;
     _topContentInsect    = CDV_IsIPad()? 0: 80;
     _bottomContentInsect = CDV_IsIPad()? 0: 40;
+    
     
     UIColor *defaultBGColor = [UIColor colorWithRed:222.0/255 green:231.0/255 blue:239.0/255 alpha:1];
     self.morganstanley.backgroundColor = self.view.backgroundColor = defaultBGColor;
@@ -218,6 +223,11 @@ static NSString *const cellId = @"ApplicationSmallCell";
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //Keep record of which point is clicked...
+        _originatingPoint = [collectionView convertPoint:cell.center toView:self.view];
+        NSLog(@"%f, %f", cell.center.x, cell.center.y);
+        NSLog(@"%f, %f", _originatingPoint.x, _originatingPoint.y);
+        
         //Logical
         MDMApplication *app = [self.applications objectAtIndex:indexPath.item];
         if(app && app.url != nil)
@@ -257,7 +267,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     if(CDV_IsIPad()) _pageControlBeingUsed = NO;
 }
 
-#pragma mark - Passenger App
+#pragma mark - Segue and launch Passenger App
 - (void) launchPassengerApp
 {
     if(self.passengerAppToOpen != nil)
@@ -268,16 +278,34 @@ static NSString *const cellId = @"ApplicationSmallCell";
 {
     //TODO: remove observers to notification center
     
-    if([segue.identifier isEqualToString:SEGUE_LAUNCH_PASSENGER_APP]) {
+    if([segue.identifier isEqualToString:SEGUE_LAUNCH_PASSENGER_APP] && [segue isKindOfClass:[CustomSegue class]]) {
         //setup PassengerAppViewController
         PassengerAppHybridViewController *destination = segue.destinationViewController;
         destination.passengerApp = self.passengerAppToOpen;
         destination.allApps = self.applications;
         
+        //setup segue status
+        CustomSegue *segueToPerform = (CustomSegue *) segue;
+        segueToPerform.originatingPoint = _originatingPoint;
+        
         //clean
         self.passengerAppToOpen = nil;
         self.bouncingImmediately = NO;
     }
+}
+
+- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+    // Instantiate a new CustomUnwindSegue
+    CustomUnwindSegue *segue = [[CustomUnwindSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
+    // Set the target point
+    segue.targetPoint = _originatingPoint;
+    //reset originating point
+    _originatingPoint = self.view.center;
+    return segue;
+}
+
+- (IBAction)returnToWelcome:(UIStoryboardSegue *)segue {
+    
 }
 
 @end

@@ -1,15 +1,15 @@
 //
-//  MSCycleProgressView.h
-//  
+//  CustomSegue
+//
 //
 //  Created by Michael Fei on 7/10/14.
 //  Copyright (c) 2014 Morgan Stanley. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 
-@interface MSCycleProgressView : UIView
+@interface CustomSegue : UIStoryboardSegue
 
-@property (nonatomic, assign) CGFloat progress;
+// Originating point for animation
+@property CGPoint originatingPoint;
 
 @end

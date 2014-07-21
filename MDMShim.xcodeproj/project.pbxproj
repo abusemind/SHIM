@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8052F8ED19767DF3002C2657 /* UIApplication+TouchIdleTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8052F8EC19767DF3002C2657 /* UIApplication+TouchIdleTimer.m */; };
+		808C04C51977B8BB0077E0D9 /* AuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 808C04C41977B8BB0077E0D9 /* AuthManager.m */; };
+		808E0FDB197CF81E00F6D31D /* CustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 808E0FD8197CF81E00F6D31D /* CustomSegue.m */; };
+		808E0FDC197CF81E00F6D31D /* CustomUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 808E0FDA197CF81E00F6D31D /* CustomUnwindSegue.m */; };
 		80A3FB491975247900EF5684 /* ALAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A3FB3D1975247900EF5684 /* ALAlertBanner.m */; };
 		80A3FB4A1975247900EF5684 /* ALAlertBannerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A3FB3F1975247900EF5684 /* ALAlertBannerManager.m */; };
 		80A3FB4B1975247900EF5684 /* bannerAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = 80A3FB411975247900EF5684 /* bannerAlert.png */; };
@@ -119,6 +123,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8052F8EB19767DF3002C2657 /* UIApplication+TouchIdleTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+TouchIdleTimer.h"; sourceTree = "<group>"; };
+		8052F8EC19767DF3002C2657 /* UIApplication+TouchIdleTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TouchIdleTimer.m"; sourceTree = "<group>"; };
+		808C04C31977B8BB0077E0D9 /* AuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthManager.h; sourceTree = "<group>"; };
+		808C04C41977B8BB0077E0D9 /* AuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthManager.m; sourceTree = "<group>"; };
+		808E0FD7197CF81E00F6D31D /* CustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSegue.h; sourceTree = "<group>"; };
+		808E0FD8197CF81E00F6D31D /* CustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSegue.m; sourceTree = "<group>"; };
+		808E0FD9197CF81E00F6D31D /* CustomUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUnwindSegue.h; sourceTree = "<group>"; };
+		808E0FDA197CF81E00F6D31D /* CustomUnwindSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUnwindSegue.m; sourceTree = "<group>"; };
 		80A3FB3B1975247900EF5684 /* ALAlertBanner+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAlertBanner+Private.h"; sourceTree = "<group>"; };
 		80A3FB3C1975247900EF5684 /* ALAlertBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAlertBanner.h; sourceTree = "<group>"; };
 		80A3FB3D1975247900EF5684 /* ALAlertBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAlertBanner.m; sourceTree = "<group>"; };
@@ -320,6 +332,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		808E0FD5197CF7F300F6D31D /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				808E0FD7197CF81E00F6D31D /* CustomSegue.h */,
+				808E0FD8197CF81E00F6D31D /* CustomSegue.m */,
+				808E0FD9197CF81E00F6D31D /* CustomUnwindSegue.h */,
+				808E0FDA197CF81E00F6D31D /* CustomUnwindSegue.m */,
+			);
+			name = Segue;
+			sourceTree = "<group>";
+		};
 		80A3FB3A1975247900EF5684 /* ALAlertBanner */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,8 +384,8 @@
 		80A3FB5A1975253D00EF5684 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				FFE68C3D197589AD00E7544D /* Matrix */,
 				FFE68C241975892100E7544D /* Cordova */,
+				FFE68C3D197589AD00E7544D /* Matrix */,
 				80A3FB5B1975253D00EF5684 /* MDMShim */,
 			);
 			name = Plugins;
@@ -384,6 +407,17 @@
 				80A3FB5E1975253D00EF5684 /* ShimNotificationCenter.m */,
 			);
 			path = ShimNotificationCenter;
+			sourceTree = "<group>";
+		};
+		80A3FC741976797F00EF5684 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8052F8EB19767DF3002C2657 /* UIApplication+TouchIdleTimer.h */,
+				8052F8EC19767DF3002C2657 /* UIApplication+TouchIdleTimer.m */,
+				808C04C31977B8BB0077E0D9 /* AuthManager.h */,
+				808C04C41977B8BB0077E0D9 /* AuthManager.m */,
+			);
+			name = Auth;
 			sourceTree = "<group>";
 		};
 		FF72402E197049CF002A8A1C /* Native */ = {
@@ -439,6 +473,7 @@
 		FF7240801971743B002A8A1C /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				80A3FC741976797F00EF5684 /* Auth */,
 				FF72408A19717448002A8A1C /* App Cache */,
 			);
 			path = Infrastructure;
@@ -632,6 +667,7 @@
 		FF7E2A2D196FC0E300591971 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				808E0FD5197CF7F300F6D31D /* Segue */,
 				FF72406D19711E1D002A8A1C /* Menu */,
 				FF7E2A2A196FC0DF00591971 /* MSCycleProgressView.h */,
 				FF7E2A2B196FC0DF00591971 /* MSCycleProgressView.m */,
@@ -1007,6 +1043,7 @@
 				FFE68C371975892100E7544D /* CDVNotification.m in Sources */,
 				FF72403219704A19002A8A1C /* PassengerAppHybridViewController.m in Sources */,
 				FF7240B0197195C8002A8A1C /* SDWebImageCompat.m in Sources */,
+				8052F8ED19767DF3002C2657 /* UIApplication+TouchIdleTimer.m in Sources */,
 				FF7E2A10196FB25300591971 /* JSONModelClassProperty.m in Sources */,
 				FF7240BA197195C8002A8A1C /* UIImageView+HighlightedWebCache.m in Sources */,
 				FF7240B5197195C8002A8A1C /* SDWebImagePrefetcher.m in Sources */,
@@ -1015,8 +1052,11 @@
 				FF7240B2197195C8002A8A1C /* SDWebImageDownloader.m in Sources */,
 				FFE68C361975892100E7544D /* CDVLogger.m in Sources */,
 				FFE68C391975892100E7544D /* CDVConnection.m in Sources */,
+				808C04C51977B8BB0077E0D9 /* AuthManager.m in Sources */,
 				FF7240AE197195C8002A8A1C /* NSData+ImageContentType.m in Sources */,
+				808E0FDC197CF81E00F6D31D /* CustomUnwindSegue.m in Sources */,
 				FF72407019711E61002A8A1C /* PopupView.m in Sources */,
+				808E0FDB197CF81E00F6D31D /* CustomSegue.m in Sources */,
 				FFB301D0196F8344001FE814 /* LoadingViewController.m in Sources */,
 				FF7240611970F8BA002A8A1C /* SpringnyFlowLayout.m in Sources */,
 				FF7240B1197195C8002A8A1C /* SDWebImageDecoder.m in Sources */,
@@ -1192,7 +1232,7 @@
 					"$(PROJECT_DIR)/MDMShim/Lib/AppConnect",
 					"$(PROJECT_DIR)/Lib/AppConnect",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "A51AC6DC-03D3-4618-B74C-D1CC246FE340";
 				VALID_ARCHS = armv7;
@@ -1215,7 +1255,7 @@
 					"$(PROJECT_DIR)/MDMShim/Lib/AppConnect",
 					"$(PROJECT_DIR)/Lib/AppConnect",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "A51AC6DC-03D3-4618-B74C-D1CC246FE340";
 				VALID_ARCHS = armv7;

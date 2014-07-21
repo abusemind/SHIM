@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIApplication+TouchIdleTimer.h"
 
-#import "AppDelegate.h"
+#import "AppConnect.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        int retVal = UIApplicationMain(argc, argv, kACUIApplicationClassName, @"AppDelegate");
+        return retVal;
     }
 }

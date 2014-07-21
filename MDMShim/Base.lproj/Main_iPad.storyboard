@@ -100,7 +100,7 @@
                         <outlet property="enterpriseAppStore" destination="bYH-fB-36V" id="c4a-z8-BVC"/>
                         <outlet property="morganstanley" destination="UFc-rV-2c1" id="Dkt-bE-gAj"/>
                         <outlet property="pageControl" destination="Wyx-uI-rFM" id="04y-C4-nac"/>
-                        <segue destination="qke-Oz-XYm" kind="modal" identifier="launchPassengerApp" modalTransitionStyle="crossDissolve" id="2F3-lw-pbq"/>
+                        <segue destination="qke-Oz-XYm" kind="custom" identifier="launchPassengerApp" customClass="CustomSegue" id="2F3-lw-pbq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Aj-GW-4ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,8 +120,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="nAd-mT-0SK" kind="unwind" identifier="welcomeScreen" unwindAction="returnToWelcome:" id="XFN-Yl-Ibb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kaS-h5-V9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nAd-mT-0SK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1710" y="-119"/>
         </scene>
