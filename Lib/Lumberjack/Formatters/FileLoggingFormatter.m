@@ -52,7 +52,7 @@
             break;
     }
     
-    return [NSString stringWithFormat:@"%@|%@(%i) %@| %@", logLevel, filename, lineNumber, timestamp, logMessage->logMsg];
+    return [NSString stringWithFormat:@"%@ | %@#%i %@ | %@", logLevel, filename, lineNumber, timestamp, logMessage->logMsg];
 }
 
 - (void)didAddToLogger:(id <DDLogger>)logger
