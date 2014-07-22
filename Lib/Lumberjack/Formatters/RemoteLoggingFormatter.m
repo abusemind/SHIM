@@ -1,18 +1,18 @@
 //
-//  MDMShimLoggingFormatter.m
+//  RemoteLoggingFormat.m
 //  MDMShim
 //
 //  Created by Fei, Michael (Enterprise Infrastructure) on 7/22/14.
 //  Copyright (c) 2014 Morgan Stanley. All rights reserved.
 //
 
-#import "FileLoggingFormatter.h"
+#import "RemoteLoggingFormatter.h"
 #import <libkern/OSAtomic.h>
 
 /**
  https://github.com/CocoaLumberjack/CocoaLumberjack/wiki/CustomFormatters
  */
-@interface FileLoggingFormatter()
+@interface RemoteLoggingFormatter()
 {
     int atomicLoggerCount;
     NSDateFormatter *threadUnsafeDateFormatter;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation FileLoggingFormatter
+@implementation RemoteLoggingFormatter
 
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
@@ -36,23 +36,23 @@
     switch (logMessage->logFlag)
     {
         case LOG_FLAG_ERROR :
-            logLevel = @"[ERROR]";
+            logLevel = @"[E]";
             break;
         case LOG_FLAG_WARN  :
-            logLevel = @"[WARN] ";
+            logLevel = @"[W] ";
             break;
         case LOG_FLAG_INFO  :
-            logLevel = @"[INFO] ";
+            logLevel = @"[I] ";
             break;
         case LOG_FLAG_DEBUG :
-            logLevel = @"[DEBUG]";
+            logLevel = @"[D]";
             break;
         default             :
-            logLevel = @"       ";
+            logLevel = @"[V]";
             break;
     }
     
-    return [NSString stringWithFormat:@"%@|%@#%i %@| %@", logLevel, filename, lineNumber, timestamp, logMessage->logMsg];
+    return [NSString stringWithFormat:@"%@ |%@ %@| %@", [UIDevice currentDevice].name, timestamp, logLevel, logMessage->logMsg];
 }
 
 - (void)didAddToLogger:(id <DDLogger>)logger

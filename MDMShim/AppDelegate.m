@@ -13,6 +13,7 @@
 #import "ConsoleLoggingFormatter.h"
 #import "FileLoggingFormatter.h"
 #import "LogFileManager.h"
+#import "RemoteLoggingFormatter.h"
 
 @interface AppDelegate()
 
@@ -73,12 +74,13 @@
  */
 - (void) setupLoggingFramework
 {
+    //Console & Apple System Log
     ConsoleLoggingFormatter *consoleFormat = [ConsoleLoggingFormatter new];
-    [DDLog addLogger:[DDASLLogger sharedInstance] withLogLevel:LOG_LEVEL_VERBOSE]; //Apple System Log
-    [DDLog addLogger:[DDTTYLogger sharedInstance] withLogLevel:LOG_LEVEL_VERBOSE]; //Console Log
+    [DDLog addLogger:[DDASLLogger sharedInstance] withLogLevel:LOG_LEVEL_VERBOSE];
+    [DDLog addLogger:[DDTTYLogger sharedInstance] withLogLevel:LOG_LEVEL_VERBOSE];
     [[DDTTYLogger sharedInstance] setLogFormatter:consoleFormat];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-    
+    //File
     FileLoggingFormatter *fileFormat = [FileLoggingFormatter new];
     LogFileManager *fileMgr = [LogFileManager new];
     DDFileLogger *fileLogger;
@@ -86,7 +88,12 @@
     fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
     fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
     [fileLogger setLogFormatter:fileFormat];
-    [DDLog addLogger:fileLogger withLogLevel:LOG_LEVEL_WARN];//File Log
+    [DDLog addLogger:fileLogger withLogLevel:LOG_LEVEL_WARN];
+    //Remote (against MDM Server?)
+    RemoteLoggingFormatter *remoteFormat = [RemoteLoggingFormatter new];
+    RemoteLogger *remoteLogger = [RemoteLogger new];
+    [remoteLogger setLogFormatter:remoteFormat];
+    [DDLog addLogger:remoteLogger withLogLevel:LOG_LEVEL_INFO];
     
     //customize different colors for different log levels printed in console (ie, DDTTYLogger). Need XcodeColors Plugin pre-installed
     UIColor *verb  = [UIColor colorWithRed:135.0/255 green:135.0/255 blue:135.0/255 alpha:1];

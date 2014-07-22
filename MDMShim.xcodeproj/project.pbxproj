@@ -35,6 +35,8 @@
 		80B6DCFD197E4398001D7F6D /* FileLoggingFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B6DCFC197E4398001D7F6D /* FileLoggingFormatter.m */; };
 		80B6DD00197E4E04001D7F6D /* ConsoleLoggingFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B6DCFF197E4E04001D7F6D /* ConsoleLoggingFormatter.m */; };
 		80B6DD04197E54ED001D7F6D /* LogFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B6DD03197E54ED001D7F6D /* LogFileManager.m */; };
+		80B6DD09197E6B0F001D7F6D /* RemoteLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B6DD08197E6B0F001D7F6D /* RemoteLogger.m */; };
+		80B6DD0C197E6C63001D7F6D /* RemoteLoggingFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B6DD0B197E6C63001D7F6D /* RemoteLoggingFormatter.m */; };
 		FF7240271970487C002A8A1C /* BaseHybridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7240261970487C002A8A1C /* BaseHybridViewController.m */; };
 		FF724029197049A3002A8A1C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF724028197049A3002A8A1C /* AssetsLibrary.framework */; };
 		FF72402B197049AF002A8A1C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF72402A197049AF002A8A1C /* CoreLocation.framework */; };
@@ -181,6 +183,10 @@
 		80B6DCFF197E4E04001D7F6D /* ConsoleLoggingFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConsoleLoggingFormatter.m; path = Formatters/ConsoleLoggingFormatter.m; sourceTree = "<group>"; };
 		80B6DD02197E54ED001D7F6D /* LogFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogFileManager.h; sourceTree = "<group>"; };
 		80B6DD03197E54ED001D7F6D /* LogFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogFileManager.m; sourceTree = "<group>"; };
+		80B6DD07197E6B0F001D7F6D /* RemoteLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteLogger.h; sourceTree = "<group>"; };
+		80B6DD08197E6B0F001D7F6D /* RemoteLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteLogger.m; sourceTree = "<group>"; };
+		80B6DD0A197E6C63001D7F6D /* RemoteLoggingFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteLoggingFormatter.h; path = Formatters/RemoteLoggingFormatter.h; sourceTree = "<group>"; };
+		80B6DD0B197E6C63001D7F6D /* RemoteLoggingFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemoteLoggingFormatter.m; path = Formatters/RemoteLoggingFormatter.m; sourceTree = "<group>"; };
 		FF7240251970487C002A8A1C /* BaseHybridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHybridViewController.h; sourceTree = "<group>"; };
 		FF7240261970487C002A8A1C /* BaseHybridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHybridViewController.m; sourceTree = "<group>"; };
 		FF724028197049A3002A8A1C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -454,22 +460,11 @@
 		80B6DCD6197E0E9E001D7F6D /* Lumberjack */ = {
 			isa = PBXGroup;
 			children = (
+				80B6DD06197E6AD4001D7F6D /* Basics */,
+				80B6DD05197E6ABA001D7F6D /* Remote Logging */,
 				80B6DD01197E54D5001D7F6D /* FileManager */,
 				80B6DCFA197E436F001D7F6D /* Formatters */,
 				80B6DCD7197E0E9E001D7F6D /* CLI */,
-				80B6DCDA197E0E9E001D7F6D /* DDAbstractDatabaseLogger.h */,
-				80B6DCDB197E0E9E001D7F6D /* DDAbstractDatabaseLogger.m */,
-				80B6DCDC197E0E9E001D7F6D /* DDASLLogCapture.h */,
-				80B6DCDD197E0E9E001D7F6D /* DDASLLogCapture.m */,
-				80B6DCDE197E0E9E001D7F6D /* DDASLLogger.h */,
-				80B6DCDF197E0E9E001D7F6D /* DDASLLogger.m */,
-				80B6DCE0197E0E9E001D7F6D /* DDFileLogger.h */,
-				80B6DCE1197E0E9E001D7F6D /* DDFileLogger.m */,
-				80B6DCE2197E0E9E001D7F6D /* DDLog+LOGV.h */,
-				80B6DCE3197E0E9E001D7F6D /* DDLog.h */,
-				80B6DCE4197E0E9E001D7F6D /* DDLog.m */,
-				80B6DCE5197E0E9E001D7F6D /* DDTTYLogger.h */,
-				80B6DCE6197E0E9E001D7F6D /* DDTTYLogger.m */,
 			);
 			path = Lumberjack;
 			sourceTree = "<group>";
@@ -490,6 +485,8 @@
 				80B6DCFC197E4398001D7F6D /* FileLoggingFormatter.m */,
 				80B6DCFE197E4E04001D7F6D /* ConsoleLoggingFormatter.h */,
 				80B6DCFF197E4E04001D7F6D /* ConsoleLoggingFormatter.m */,
+				80B6DD0A197E6C63001D7F6D /* RemoteLoggingFormatter.h */,
+				80B6DD0B197E6C63001D7F6D /* RemoteLoggingFormatter.m */,
 			);
 			name = Formatters;
 			sourceTree = "<group>";
@@ -501,6 +498,35 @@
 				80B6DD03197E54ED001D7F6D /* LogFileManager.m */,
 			);
 			path = FileManager;
+			sourceTree = "<group>";
+		};
+		80B6DD05197E6ABA001D7F6D /* Remote Logging */ = {
+			isa = PBXGroup;
+			children = (
+				80B6DD07197E6B0F001D7F6D /* RemoteLogger.h */,
+				80B6DD08197E6B0F001D7F6D /* RemoteLogger.m */,
+			);
+			path = "Remote Logging";
+			sourceTree = "<group>";
+		};
+		80B6DD06197E6AD4001D7F6D /* Basics */ = {
+			isa = PBXGroup;
+			children = (
+				80B6DCDA197E0E9E001D7F6D /* DDAbstractDatabaseLogger.h */,
+				80B6DCDB197E0E9E001D7F6D /* DDAbstractDatabaseLogger.m */,
+				80B6DCDC197E0E9E001D7F6D /* DDASLLogCapture.h */,
+				80B6DCDD197E0E9E001D7F6D /* DDASLLogCapture.m */,
+				80B6DCDE197E0E9E001D7F6D /* DDASLLogger.h */,
+				80B6DCDF197E0E9E001D7F6D /* DDASLLogger.m */,
+				80B6DCE0197E0E9E001D7F6D /* DDFileLogger.h */,
+				80B6DCE1197E0E9E001D7F6D /* DDFileLogger.m */,
+				80B6DCE2197E0E9E001D7F6D /* DDLog+LOGV.h */,
+				80B6DCE3197E0E9E001D7F6D /* DDLog.h */,
+				80B6DCE4197E0E9E001D7F6D /* DDLog.m */,
+				80B6DCE5197E0E9E001D7F6D /* DDTTYLogger.h */,
+				80B6DCE6197E0E9E001D7F6D /* DDTTYLogger.m */,
+			);
+			name = Basics;
 			sourceTree = "<group>";
 		};
 		FF72402E197049CF002A8A1C /* Native */ = {
@@ -1142,6 +1168,7 @@
 				FF7E2A0D196FB25300591971 /* JSONModel+CoreData.m in Sources */,
 				FF7240B2197195C8002A8A1C /* SDWebImageDownloader.m in Sources */,
 				FFE68C361975892100E7544D /* CDVLogger.m in Sources */,
+				80B6DD09197E6B0F001D7F6D /* RemoteLogger.m in Sources */,
 				FFE68C391975892100E7544D /* CDVConnection.m in Sources */,
 				80B6DCFD197E4398001D7F6D /* FileLoggingFormatter.m in Sources */,
 				808C04C51977B8BB0077E0D9 /* AuthManager.m in Sources */,
@@ -1173,6 +1200,7 @@
 				FF7240B9197195C8002A8A1C /* UIImage+WebP.m in Sources */,
 				FF7240B6197195C8002A8A1C /* UIButton+WebCache.m in Sources */,
 				FFB301C3196F8344001FE814 /* main.m in Sources */,
+				80B6DD0C197E6C63001D7F6D /* RemoteLoggingFormatter.m in Sources */,
 				FF7240271970487C002A8A1C /* BaseHybridViewController.m in Sources */,
 				FF7E2A13196FB25300591971 /* JSONAPI.m in Sources */,
 				FF7E2A17196FB25300591971 /* JSONValueTransformer.m in Sources */,

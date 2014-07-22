@@ -24,6 +24,7 @@
     #import "DDTTYLogger.h"
     #import "DDASLLogger.h"
     #import "DDFileLogger.h"
+    #import "RemoteLogger.h"
 #ifdef DEBUG
     static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
