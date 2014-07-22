@@ -8,8 +8,11 @@
 
 #import "AppDelegate.h"
 #import "AuthManager.h"
-
 #import "MSPasteboardSharedLogger.h"
+
+#import "ConsoleLoggingFormatter.h"
+#import "FileLoggingFormatter.h"
+#import "LogFileManager.h"
 
 @interface AppDelegate()
 
@@ -24,10 +27,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #if !TARGET_IPHONE_SIMULATOR
-    [MSPasteboardSharedLogger enable];
+    //[MSPasteboardSharedLogger enable];
 #endif
     
     [[AuthManager defaultManager] startIdleTimer];
+    [self setupLoggingFramework];
     
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     return YES;
@@ -57,6 +61,67 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     [[AuthManager defaultManager] stopIdleTimer];
+}
+
+#pragma makr - Logging
+/**
+ DDLogError
+ DDLogWarn
+ DDLogInfo (Reserved for general passenger app logging - MDMShim itself should not use this log level)
+ DDLogDebug
+ DDLogVerbose
+ */
+- (void) setupLoggingFramework
+{
+    ConsoleLoggingFormatter *consoleFormat = [ConsoleLoggingFormatter new];
+    [DDLog addLogger:[DDASLLogger sharedInstance] withLogLevel:LOG_LEVEL_VERBOSE]; //Apple System Log
+    [DDLog addLogger:[DDTTYLogger sharedInstance] withLogLevel:LOG_LEVEL_VERBOSE]; //Console Log
+    [[DDTTYLogger sharedInstance] setLogFormatter:consoleFormat];
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+    
+    FileLoggingFormatter *fileFormat = [FileLoggingFormatter new];
+    LogFileManager *fileMgr = [LogFileManager new];
+    DDFileLogger *fileLogger;
+    fileLogger = [[DDFileLogger alloc] initWithLogFileManager:fileMgr];
+    fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    [fileLogger setLogFormatter:fileFormat];
+    [DDLog addLogger:fileLogger withLogLevel:LOG_LEVEL_WARN];//File Log
+    
+    //customize different colors for different log levels printed in console (ie, DDTTYLogger). Need XcodeColors Plugin pre-installed
+    UIColor *verb  = [UIColor colorWithRed:135.0/255 green:135.0/255 blue:135.0/255 alpha:1];
+    UIColor *debug = [UIColor blackColor];
+    UIColor *info  = [UIColor colorWithRed:0/255 green:89.0/255 blue:156.0/255 alpha:1];
+    UIColor *warn  = [UIColor colorWithRed:255.0/255 green:101.0/255 blue:0 alpha:1];
+    UIColor *error = [UIColor colorWithRed:206.0/255 green:0 blue:0 alpha:1];
+    
+    [[DDTTYLogger sharedInstance] setForegroundColor:verb backgroundColor:nil forFlag:LOG_FLAG_VERBOSE];
+    [[DDTTYLogger sharedInstance] setForegroundColor:debug backgroundColor:nil forFlag:LOG_FLAG_DEBUG];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor whiteColor] backgroundColor:info forFlag:LOG_FLAG_INFO];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor whiteColor] backgroundColor:warn forFlag:LOG_FLAG_WARN];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor whiteColor] backgroundColor:error forFlag:LOG_FLAG_ERROR];
+    
+    DDLogVerbose(@"Logging framework Verbose test");
+    DDLogDebug(@"Logging framework Debug test");
+    DDLogInfo(@"Logging framework Info test");
+    DDLogWarn(@"Logging framework Warn test");
+    DDLogError(@"Logging framework error test");
+    
+    
+    DDLogInfo(@"Below are tests for log stored in File system:");
+    NSArray *loggers = [DDLog allLoggers];
+    for(id <DDLogger> logger in loggers){
+        if([logger isKindOfClass:[DDFileLogger class]]){
+            DDFileLogger *fileLogger = (DDFileLogger *)logger;
+            
+            NSArray *logPaths = [[fileLogger logFileManager] sortedLogFilePaths];
+            for(NSString *path in logPaths){
+                NSString *log = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+                DDLogDebug(@"\n%@", log);
+            }
+        }
+    }
+    
 }
 
 @end

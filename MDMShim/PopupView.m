@@ -542,11 +542,16 @@ typedef void (^completion)(BOOL success);
 -(void)show {
 
     self.userInteractionEnabled = NO;
-    [UIView animateWithDuration:0.32 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:30 options:0 animations:^{
+    contentView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    
+    [UIView animateWithDuration:0.32 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:30 options:0 animations:^{
         self.alpha = 1;
         backGroundBlurr.alpha = 1;
         contentView.center = self.center;
+        contentView.transform = CGAffineTransformMakeScale(1., 1.);
     } completion:^(BOOL finished){
+        
+        contentView.transform = CGAffineTransformIdentity;
         
         //avoid mis click to dismiss unintentionally
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

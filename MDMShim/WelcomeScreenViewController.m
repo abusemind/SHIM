@@ -224,9 +224,9 @@ static NSString *const cellId = @"ApplicationSmallCell";
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //Keep record of which point is clicked...
-        _originatingPoint = [collectionView convertPoint:cell.center toView:self.view];
-        NSLog(@"%f, %f", cell.center.x, cell.center.y);
-        NSLog(@"%f, %f", _originatingPoint.x, _originatingPoint.y);
+        CGPoint imageCenter = [cell convertPoint:cell.appIcon.center toView:collectionView];
+        _originatingPoint = [collectionView convertPoint:imageCenter toView:self.view];
+        
         
         //Logical
         MDMApplication *app = [self.applications objectAtIndex:indexPath.item];

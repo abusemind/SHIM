@@ -97,7 +97,7 @@ static NSString *const kLastAccessDateKey = @"MSMDMShimLastActiveDate";
 
 - (void) expireCookie
 {
-    NSLog(@"Now delete cookies");
+#warning TODO: delete cookies when expire auth timer fired here
     
     [self scheduleExpireTimer];
 }

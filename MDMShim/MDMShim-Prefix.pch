@@ -6,6 +6,7 @@
 
 #import <Availability.h>
 
+
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
@@ -14,7 +15,22 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-    #import <Cordova/CDVDebug.h>
     #import "Constants.h"
     #import "UIImageView+WebCache.h"
+
+
+//lumberjack logging framework
+    #import "DDLog.h"
+    #import "DDTTYLogger.h"
+    #import "DDASLLogger.h"
+    #import "DDFileLogger.h"
+#ifdef DEBUG
+    static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+    static const int ddLogLevel = LOG_LEVEL_INFO;
+#endif
+//end of lumberjack logging framework
+
+
+
 #endif

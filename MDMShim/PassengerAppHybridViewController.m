@@ -38,7 +38,7 @@
     _apps = [[UIImage imageNamed:@"apps.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     _logout = [[UIImage imageNamed:@"logout.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setupMenuButton];
     });
 }
@@ -149,7 +149,7 @@
 - (void) showOtherApps
 {
     if(self.allApps == nil || [self.allApps count] == 0){
-        DLog(@"No other applications to present");
+        DDLogWarn(@"%@", @"No other apps are currently available");
         return;
     }
     
@@ -184,7 +184,7 @@
 
 - (void) logout
 {
-    DLog(@"TODO:Logout");
+    DDLogWarn(@"TODO: %@", @"Logout");
 }
 
 #pragma mark - rotate
