@@ -8,25 +8,17 @@
 
 #import "ShimLogFileManagerBase.h"
 
+
+
 @interface ShimLogFileManagerBase()
 @property (nonatomic, copy)   NSString *contextName;
+@property (nonatomic, assign) int       ctx;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @end
 
 @implementation ShimLogFileManagerBase
 
-- (instancetype)initWithLogsContextName:(NSString *)subDir
-{
-    if(self = [super init]){
-        _contextName = [subDir copy];
-        _defaultFileProtectionLevel = NSFileProtectionComplete;
-    }
-    
-    return self;
-}
-
-//Override - the parent folder of all logs are fully controlled internally
-- (NSString *)defaultLogsDirectory
++ (NSString *) rootLogsDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *baseDir = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
@@ -34,6 +26,18 @@
     NSString *logsDirectory = [[baseDir stringByAppendingPathComponent:@"Logs"] stringByAppendingPathComponent:bundleVersion];
     return logsDirectory;
 }
+
+- (instancetype)initWithLogsDirectory: (NSString *)directory contextName:(NSString *)contextName context: (int) context
+{
+    if(self = [super initWithLogsDirectory:directory defaultFileProtectionLevel:NSFileProtectionComplete]){
+        
+        _contextName = [contextName copy];
+        _ctx = context;
+    }
+    
+    return self;
+}
+
 
 //Override - change the default log file name
 - (NSString *)newLogFileName

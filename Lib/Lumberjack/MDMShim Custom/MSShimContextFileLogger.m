@@ -18,12 +18,12 @@
     if(!contextName) contextName = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleIdentifierKey];
     if(ctx < 0) ctx = 0;
     
-    ShimLogFileManagerBase *fileManager = [[ShimLogFileManagerBase alloc] initWithLogsContextName:contextName];
+    NSString *logsDirectory = [[ShimLogFileManagerBase rootLogsDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%i", ctx]];
+    ShimLogFileManagerBase *fileManager = [[ShimLogFileManagerBase alloc] initWithLogsDirectory:logsDirectory contextName:contextName context:ctx];
     
     if(self = [super initWithLogFileManager:fileManager]){
         _contextName = contextName;
         _context = ctx;
-        
         
         FileLoggingFormatter *contextFormatter = [[FileLoggingFormatter alloc] initWithContextName:contextName];;
         [self setLogFormatter:contextFormatter];

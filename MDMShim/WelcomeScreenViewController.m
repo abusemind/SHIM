@@ -125,7 +125,7 @@ static NSString *const cellId = @"ApplicationSmallCell";
     
     self.applications = [NSMutableArray new];
     
-    for(int i = 0; i < 40; i++)
+    for(int i = 1; i < 40; i++)
     {
         MDMApplication *app = [MDMApplication new];
         app.name = [NSString stringWithFormat:@"App: %d", i];

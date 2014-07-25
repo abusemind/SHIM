@@ -10,6 +10,8 @@
 
 @interface ShimLogFileManagerBase : DDLogFileManagerDefault
 
-- (instancetype)initWithLogsContextName:(NSString *)subDir;
+- (instancetype)initWithLogsDirectory: (NSString *) directory contextName:(NSString *)contextName context: (int) context;
+
++ (NSString *) rootLogsDirectory;
 
 @end
