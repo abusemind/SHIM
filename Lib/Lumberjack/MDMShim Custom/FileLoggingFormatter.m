@@ -1,18 +1,18 @@
 //
-//  RemoteLoggingFormat.m
+//  MDMShimLoggingFormatter.m
 //  MDMShim
 //
 //  Created by Fei, Michael (Enterprise Infrastructure) on 7/22/14.
 //  Copyright (c) 2014 Morgan Stanley. All rights reserved.
 //
 
-#import "RemoteLoggingFormatter.h"
+#import "FileLoggingFormatter.h"
 #import <libkern/OSAtomic.h>
 
 /**
  https://github.com/CocoaLumberjack/CocoaLumberjack/wiki/CustomFormatters
  */
-@interface RemoteLoggingFormatter()
+@interface FileLoggingFormatter()
 {
     int atomicLoggerCount;
     NSDateFormatter *threadUnsafeDateFormatter;
@@ -20,7 +20,16 @@
 
 @end
 
-@implementation RemoteLoggingFormatter
+@implementation FileLoggingFormatter
+
+-(instancetype) initWithContextName: (NSString *) contextName
+{
+    if(self = [super init]){
+        _contextName = contextName;
+    }
+    
+    return self;
+}
 
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
@@ -36,23 +45,26 @@
     switch (logMessage->logFlag)
     {
         case LOG_FLAG_ERROR :
-            logLevel = @"[E]";
+            logLevel = @"E";
             break;
         case LOG_FLAG_WARN  :
-            logLevel = @"[W] ";
+            logLevel = @"W";
             break;
         case LOG_FLAG_INFO  :
-            logLevel = @"[I] ";
+            logLevel = @"I";
             break;
         case LOG_FLAG_DEBUG :
-            logLevel = @"[D]";
+            logLevel = @"D";
             break;
         default             :
-            logLevel = @"[V]";
+            logLevel = @"V";
             break;
     }
     
-    return [NSString stringWithFormat:@"%@ |%@ %@| %@", [UIDevice currentDevice].name, timestamp, logLevel, logMessage->logMsg];
+    if(!self.contextName)
+        return [NSString stringWithFormat:@"%@|%@#%i %@| %@", logLevel, filename, lineNumber, timestamp, logMessage->logMsg];
+    else
+        return [NSString stringWithFormat:@"%@|%@|[%@] %@#%i| %@", timestamp, logLevel, self.contextName, filename, lineNumber, logMessage->logMsg];
 }
 
 - (void)didAddToLogger:(id <DDLogger>)logger
@@ -77,7 +89,7 @@
         {
             threadUnsafeDateFormatter = [[NSDateFormatter alloc] init];
             [threadUnsafeDateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-            [threadUnsafeDateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss:SSS"];
+            [threadUnsafeDateFormatter setDateFormat:@"yy/MM/dd HH:mm:ss:SS"];
         }
         
         return [threadUnsafeDateFormatter stringFromDate:date];
@@ -96,7 +108,7 @@
         {
             dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-            [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss:SSS"];
+            [dateFormatter setDateFormat:@"yy/MM/dd HH:mm:ss:SS"];
             
             [threadDictionary setObject:dateFormatter forKey:key];
         }

@@ -12,4 +12,8 @@
 
 @interface FileLoggingFormatter : NSObject <DDLogFormatter>
 
+@property (nonatomic, readonly) NSString *contextName;
+
+-(instancetype) initWithContextName: (NSString *) contextName;
+
 @end

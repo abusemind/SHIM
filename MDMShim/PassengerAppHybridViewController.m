@@ -10,6 +10,7 @@
 #import "PopupView.h"
 #import "WelcomeScreenViewController.h"
 #import "ALAlertBanner.h"
+#import "MSShimContextFileLogger.h"
 
 @interface PassengerAppHybridViewController () <UIScrollViewDelegate>
 {
@@ -38,7 +39,9 @@
     _apps = [[UIImage imageNamed:@"apps.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     _logout = [[UIImage imageNamed:@"logout.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [self installPassengerAppLogger];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setupMenuButton];
     });
 }
@@ -48,6 +51,31 @@
     [super createGapView];
     
     [self.webView setDataDetectorTypes:UIDataDetectorTypeAll];
+}
+
+#pragma mark - logger
+- (void) installPassengerAppLogger
+{
+    DDFileLogger *passengerAppLogger = [[MSShimContextFileLogger alloc] initWithContextName:self.passengerApp.name context:self.passengerApp.appId];
+    passengerAppLogger.rollingFrequency = 60 * 60 ; // 1 hour rolling
+    passengerAppLogger.logFileManager.maximumNumberOfLogFiles = 24; //for a whole day
+    [DDLog addLogger:passengerAppLogger withLogLevel:LOG_LEVEL_DEBUG];
+}
+
+- (void) uninstallPassengerAppLogger
+{
+    NSArray *loggers = [DDLog allLoggers];
+    for(id <DDLogger> logger in loggers)
+    {
+        if([logger isKindOfClass:[MSShimContextFileLogger class]]){
+            MSShimContextFileLogger *contextAwaredLogger = (MSShimContextFileLogger *)logger;
+            
+            if(contextAwaredLogger.context == self.passengerApp.appId)
+            {
+                [DDLog removeLogger:contextAwaredLogger];
+            }
+        }
+    }
 }
 
 - (void)setPassengerApp:(MDMApplication *)passengerApp
@@ -99,6 +127,10 @@
         [self.view addSubview:_menuBtn];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            NSString *logMsg = [NSString stringWithFormat:@"Loading: %@", _passengerApp.url];
+            MSLogInfo(_passengerApp.appId, @"%@", logMsg);
+            
             ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.webView
                                                                 style:ALAlertBannerStyleNotify
                                                              position:ALAlertBannerPositionBottom
@@ -112,6 +144,8 @@
             banner.hideAnimationDuration = 0.2f;
             [banner show];
         });
+        
+        
     }
 }
 
@@ -139,6 +173,8 @@
 
 - (void) showWelcomeScreen
 {
+    MSLogInfo(_passengerApp.appId, @"%@", @"Show welcome screen");
+    
     WelcomeScreenViewController * welcomeScreen = (WelcomeScreenViewController *) self.presentingViewController;
     welcomeScreen.passengerAppToOpen = nil;
     welcomeScreen.bouncingImmediately= NO;
@@ -148,6 +184,8 @@
 
 - (void) showOtherApps
 {
+    MSLogInfo(_passengerApp.appId, @"%@", @"List all other app");
+    
     if(self.allApps == nil || [self.allApps count] == 0){
         DDLogWarn(@"%@", @"No other apps are currently available");
         return;
@@ -185,6 +223,12 @@
 - (void) logout
 {
     DDLogWarn(@"TODO: %@", @"Logout");
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //remove passenger app logger before performing any segue (which would cause leaving the app)
+    [self uninstallPassengerAppLogger];
 }
 
 #pragma mark - rotate
